@@ -5,6 +5,11 @@
 podfile.lock
 Pods/
 
+# Add this line if you want to avoid checking in source code from the Xcode workspace
+# *.xcworkspace
+
+# GPS-Todo.xcworkspace
+
 # Config files
 GPS-Todo/GoogleService-Info.plist
 
