@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3234150654337ED332B97698 /* Pods_GPS_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */; };
 		44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001C28F487BB005B97EE /* AppDelegate.swift */; };
 		44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001E28F487BB005B97EE /* SceneDelegate.swift */; };
 		44B1002128F487BB005B97EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002028F487BB005B97EE /* ViewController.swift */; };
@@ -17,6 +18,21 @@
 		44B1003728F487BD005B97EE /* GPS_TodoTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1003628F487BD005B97EE /* GPS_TodoTests.swift */; };
 		44B1004128F487BD005B97EE /* GPS_TodoUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1004028F487BD005B97EE /* GPS_TodoUITests.swift */; };
 		44B1004328F487BD005B97EE /* GPS_TodoUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1004228F487BD005B97EE /* GPS_TodoUITestsLaunchTests.swift */; };
+		44B1005528F48815005B97EE /* Interface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B1005328F48815005B97EE /* Interface.storyboard */; };
+		44B1005728F48816005B97EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B1005628F48816005B97EE /* Assets.xcassets */; };
+		44B1005D28F48817005B97EE /* AssistantWatchForGPSTODO WatchKit Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 44B1005C28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		44B1006228F48817005B97EE /* InterfaceController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1006128F48817005B97EE /* InterfaceController.swift */; };
+		44B1006428F48817005B97EE /* ExtensionDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1006328F48817005B97EE /* ExtensionDelegate.swift */; };
+		44B1006628F48817005B97EE /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1006528F48817005B97EE /* NotificationController.swift */; };
+		44B1006828F48817005B97EE /* ComplicationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1006728F48817005B97EE /* ComplicationController.swift */; };
+		44B1006A28F48818005B97EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B1006928F48818005B97EE /* Assets.xcassets */; };
+		44B1006F28F48818005B97EE /* AssistantWatchForGPSTODO.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 44B1005128F48815005B97EE /* AssistantWatchForGPSTODO.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		44B1007928F48A99005B97EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B1007828F48A99005B97EE /* GoogleService-Info.plist */; };
+		44B1007C28F48D62005B97EE /* AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1007B28F48D62005B97EE /* AdMob.swift */; };
+		816DA937E2BD09D56FA9EE31 /* Pods_GPS_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63EDE213F0A8703D6C3EEBB /* Pods_GPS_TodoTests.framework */; };
+		C5CBFCFEF351F5EAEDDE666E /* Pods_AssistantWatchForGPSTODO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4B293F0391A6747641E212 /* Pods_AssistantWatchForGPSTODO.framework */; };
+		CAF728119A73F34730E2D763 /* Pods_GPS_Todo_GPS_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02B269BDCD0FCEAA41D3EF /* Pods_GPS_Todo_GPS_TodoUITests.framework */; };
+		D41220678A2E00DD25BA2D04 /* Pods_AssistantWatchForGPSTODO_WatchKit_Extension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 522801150E1F54592392F85C /* Pods_AssistantWatchForGPSTODO_WatchKit_Extension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,9 +50,50 @@
 			remoteGlobalIDString = 44B1001828F487BB005B97EE;
 			remoteInfo = "GPS-Todo";
 		};
+		44B1005E28F48817005B97EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44B1001128F487BB005B97EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44B1005B28F48816005B97EE;
+			remoteInfo = "AssistantWatchForGPSTODO WatchKit Extension";
+		};
+		44B1006D28F48818005B97EE /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44B1001128F487BB005B97EE /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 44B1005028F48815005B97EE;
+			remoteInfo = AssistantWatchForGPSTODO;
+		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		44B1007328F48818005B97EE /* Embed App Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				44B1005D28F48817005B97EE /* AssistantWatchForGPSTODO WatchKit Extension.appex in Embed App Extensions */,
+			);
+			name = "Embed App Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B1007728F48818005B97EE /* Embed Watch Content */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/Watch";
+			dstSubfolderSpec = 16;
+			files = (
+				44B1006F28F48818005B97EE /* AssistantWatchForGPSTODO.app in Embed Watch Content */,
+			);
+			name = "Embed Watch Content";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		11BFA085E9979C0223E22AA5 /* Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig"; path = "Target Support Files/Pods-GPS-Todo-GPS-TodoUITests/Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		15AEDB290DCFBA0987E701E4 /* Pods-GPS-TodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-TodoTests.release.xcconfig"; path = "Target Support Files/Pods-GPS-TodoTests/Pods-GPS-TodoTests.release.xcconfig"; sourceTree = "<group>"; };
 		44B1001928F487BB005B97EE /* GPS-Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS-Todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B1001C28F487BB005B97EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B1001E28F487BB005B97EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,13 +108,48 @@
 		44B1003C28F487BD005B97EE /* GPS-TodoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "GPS-TodoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B1004028F487BD005B97EE /* GPS_TodoUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPS_TodoUITests.swift; sourceTree = "<group>"; };
 		44B1004228F487BD005B97EE /* GPS_TodoUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPS_TodoUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		44B1005128F48815005B97EE /* AssistantWatchForGPSTODO.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AssistantWatchForGPSTODO.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B1005428F48815005B97EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Interface.storyboard; sourceTree = "<group>"; };
+		44B1005628F48816005B97EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44B1005C28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "AssistantWatchForGPSTODO WatchKit Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		44B1006128F48817005B97EE /* InterfaceController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InterfaceController.swift; sourceTree = "<group>"; };
+		44B1006328F48817005B97EE /* ExtensionDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtensionDelegate.swift; sourceTree = "<group>"; };
+		44B1006528F48817005B97EE /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
+		44B1006728F48817005B97EE /* ComplicationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ComplicationController.swift; sourceTree = "<group>"; };
+		44B1006928F48818005B97EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		44B1006B28F48818005B97EE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B1006C28F48818005B97EE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
+		44B1007828F48A99005B97EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		44B1007B28F48D62005B97EE /* AdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMob.swift; sourceTree = "<group>"; };
+		499114AF779D1C29EDF1C74E /* Pods-GPS-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo.release.xcconfig"; path = "Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo.release.xcconfig"; sourceTree = "<group>"; };
+		4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPS_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5160995558F6F0D7692A99F0 /* Pods-AssistantWatchForGPSTODO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO.debug.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO/Pods-AssistantWatchForGPSTODO.debug.xcconfig"; sourceTree = "<group>"; };
+		522801150E1F54592392F85C /* Pods_AssistantWatchForGPSTODO_WatchKit_Extension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssistantWatchForGPSTODO_WatchKit_Extension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CAFEC4803F285F1C6EE38BD /* Pods-AssistantWatchForGPSTODO WatchKit Extension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO WatchKit Extension.debug.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO WatchKit Extension/Pods-AssistantWatchForGPSTODO WatchKit Extension.debug.xcconfig"; sourceTree = "<group>"; };
+		5D02B269BDCD0FCEAA41D3EF /* Pods_GPS_Todo_GPS_TodoUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPS_Todo_GPS_TodoUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		793814F44560494805B36D68 /* Pods-AssistantWatchForGPSTODO.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO.release.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO/Pods-AssistantWatchForGPSTODO.release.xcconfig"; sourceTree = "<group>"; };
+		7F4B293F0391A6747641E212 /* Pods_AssistantWatchForGPSTODO.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_AssistantWatchForGPSTODO.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		872CF28F35100E4089DE15B3 /* Pods-AssistantWatchForGPSTODO WatchKit Extension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO WatchKit Extension.release.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO WatchKit Extension/Pods-AssistantWatchForGPSTODO WatchKit Extension.release.xcconfig"; sourceTree = "<group>"; };
+		C125AEA4AAEAABAC7C7F6A0D /* Pods-GPS-Todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo.debug.xcconfig"; path = "Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo.debug.xcconfig"; sourceTree = "<group>"; };
+		E63EDE213F0A8703D6C3EEBB /* Pods_GPS_TodoTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPS_TodoTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		EA03BABA840F7C606EEC1793 /* Pods-GPS-TodoTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-TodoTests.debug.xcconfig"; path = "Target Support Files/Pods-GPS-TodoTests/Pods-GPS-TodoTests.debug.xcconfig"; sourceTree = "<group>"; };
+		F0B758E41FE04A679F83EFB4 /* Pods-GPS-Todo-GPS-TodoUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo-GPS-TodoUITests.release.xcconfig"; path = "Target Support Files/Pods-GPS-Todo-GPS-TodoUITests/Pods-GPS-Todo-GPS-TodoUITests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		09DBB9F4BEA477176B1AB4BF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C5CBFCFEF351F5EAEDDE666E /* Pods_AssistantWatchForGPSTODO.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		44B1001628F487BB005B97EE /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3234150654337ED332B97698 /* Pods_GPS_Todo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +157,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				816DA937E2BD09D56FA9EE31 /* Pods_GPS_TodoTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +165,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAF728119A73F34730E2D763 /* Pods_GPS_Todo_GPS_TodoUITests.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B1005928F48816005B97EE /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D41220678A2E00DD25BA2D04 /* Pods_AssistantWatchForGPSTODO_WatchKit_Extension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,7 +186,11 @@
 				44B1001B28F487BB005B97EE /* GPS-Todo */,
 				44B1003528F487BD005B97EE /* GPS-TodoTests */,
 				44B1003F28F487BD005B97EE /* GPS-TodoUITests */,
+				44B1005228F48815005B97EE /* AssistantWatchForGPSTODO */,
+				44B1006028F48817005B97EE /* AssistantWatchForGPSTODO WatchKit Extension */,
 				44B1001A28F487BB005B97EE /* Products */,
+				F97C51861837238C9458B50D /* Pods */,
+				83B668C12008FB5F086EC33B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,6 +200,8 @@
 				44B1001928F487BB005B97EE /* GPS-Todo.app */,
 				44B1003228F487BD005B97EE /* GPS-TodoTests.xctest */,
 				44B1003C28F487BD005B97EE /* GPS-TodoUITests.xctest */,
+				44B1005128F48815005B97EE /* AssistantWatchForGPSTODO.app */,
+				44B1005C28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -101,7 +209,9 @@
 		44B1001B28F487BB005B97EE /* GPS-Todo */ = {
 			isa = PBXGroup;
 			children = (
+				44B1007A28F48D4F005B97EE /* AdMob */,
 				44B1001C28F487BB005B97EE /* AppDelegate.swift */,
+				44B1007828F48A99005B97EE /* GoogleService-Info.plist */,
 				44B1001E28F487BB005B97EE /* SceneDelegate.swift */,
 				44B1002028F487BB005B97EE /* ViewController.swift */,
 				44B1002228F487BB005B97EE /* Main.storyboard */,
@@ -130,6 +240,66 @@
 			path = "GPS-TodoUITests";
 			sourceTree = "<group>";
 		};
+		44B1005228F48815005B97EE /* AssistantWatchForGPSTODO */ = {
+			isa = PBXGroup;
+			children = (
+				44B1005328F48815005B97EE /* Interface.storyboard */,
+				44B1005628F48816005B97EE /* Assets.xcassets */,
+			);
+			path = AssistantWatchForGPSTODO;
+			sourceTree = "<group>";
+		};
+		44B1006028F48817005B97EE /* AssistantWatchForGPSTODO WatchKit Extension */ = {
+			isa = PBXGroup;
+			children = (
+				44B1006128F48817005B97EE /* InterfaceController.swift */,
+				44B1006328F48817005B97EE /* ExtensionDelegate.swift */,
+				44B1006528F48817005B97EE /* NotificationController.swift */,
+				44B1006728F48817005B97EE /* ComplicationController.swift */,
+				44B1006928F48818005B97EE /* Assets.xcassets */,
+				44B1006B28F48818005B97EE /* Info.plist */,
+				44B1006C28F48818005B97EE /* PushNotificationPayload.apns */,
+			);
+			path = "AssistantWatchForGPSTODO WatchKit Extension";
+			sourceTree = "<group>";
+		};
+		44B1007A28F48D4F005B97EE /* AdMob */ = {
+			isa = PBXGroup;
+			children = (
+				44B1007B28F48D62005B97EE /* AdMob.swift */,
+			);
+			path = AdMob;
+			sourceTree = "<group>";
+		};
+		83B668C12008FB5F086EC33B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				7F4B293F0391A6747641E212 /* Pods_AssistantWatchForGPSTODO.framework */,
+				522801150E1F54592392F85C /* Pods_AssistantWatchForGPSTODO_WatchKit_Extension.framework */,
+				4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */,
+				5D02B269BDCD0FCEAA41D3EF /* Pods_GPS_Todo_GPS_TodoUITests.framework */,
+				E63EDE213F0A8703D6C3EEBB /* Pods_GPS_TodoTests.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F97C51861837238C9458B50D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5160995558F6F0D7692A99F0 /* Pods-AssistantWatchForGPSTODO.debug.xcconfig */,
+				793814F44560494805B36D68 /* Pods-AssistantWatchForGPSTODO.release.xcconfig */,
+				5CAFEC4803F285F1C6EE38BD /* Pods-AssistantWatchForGPSTODO WatchKit Extension.debug.xcconfig */,
+				872CF28F35100E4089DE15B3 /* Pods-AssistantWatchForGPSTODO WatchKit Extension.release.xcconfig */,
+				C125AEA4AAEAABAC7C7F6A0D /* Pods-GPS-Todo.debug.xcconfig */,
+				499114AF779D1C29EDF1C74E /* Pods-GPS-Todo.release.xcconfig */,
+				11BFA085E9979C0223E22AA5 /* Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig */,
+				F0B758E41FE04A679F83EFB4 /* Pods-GPS-Todo-GPS-TodoUITests.release.xcconfig */,
+				EA03BABA840F7C606EEC1793 /* Pods-GPS-TodoTests.debug.xcconfig */,
+				15AEDB290DCFBA0987E701E4 /* Pods-GPS-TodoTests.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -137,13 +307,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44B1004628F487BD005B97EE /* Build configuration list for PBXNativeTarget "GPS-Todo" */;
 			buildPhases = (
+				D0D7AB040C25EBF6FE7B9933 /* [CP] Check Pods Manifest.lock */,
 				44B1001528F487BB005B97EE /* Sources */,
 				44B1001628F487BB005B97EE /* Frameworks */,
 				44B1001728F487BB005B97EE /* Resources */,
+				44B1007728F48818005B97EE /* Embed Watch Content */,
+				E53A666008306496C8203C7F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				44B1006E28F48818005B97EE /* PBXTargetDependency */,
 			);
 			name = "GPS-Todo";
 			productName = "GPS-Todo";
@@ -154,9 +328,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44B1004928F487BD005B97EE /* Build configuration list for PBXNativeTarget "GPS-TodoTests" */;
 			buildPhases = (
+				8D2099C8747185AB2A853263 /* [CP] Check Pods Manifest.lock */,
 				44B1002E28F487BD005B97EE /* Sources */,
 				44B1002F28F487BD005B97EE /* Frameworks */,
 				44B1003028F487BD005B97EE /* Resources */,
+				77AA826DB0E8F7EC1012703F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -172,9 +348,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 44B1004C28F487BD005B97EE /* Build configuration list for PBXNativeTarget "GPS-TodoUITests" */;
 			buildPhases = (
+				88F6E2E4B668628CD469229E /* [CP] Check Pods Manifest.lock */,
 				44B1003828F487BD005B97EE /* Sources */,
 				44B1003928F487BD005B97EE /* Frameworks */,
 				44B1003A28F487BD005B97EE /* Resources */,
+				D4B880A2FE02F9AFAB5A1C63 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -185,6 +363,43 @@
 			productName = "GPS-TodoUITests";
 			productReference = 44B1003C28F487BD005B97EE /* GPS-TodoUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		44B1005028F48815005B97EE /* AssistantWatchForGPSTODO */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44B1007428F48818005B97EE /* Build configuration list for PBXNativeTarget "AssistantWatchForGPSTODO" */;
+			buildPhases = (
+				FD890E18FD7F1A2912AA2CE1 /* [CP] Check Pods Manifest.lock */,
+				44B1004F28F48815005B97EE /* Resources */,
+				44B1007328F48818005B97EE /* Embed App Extensions */,
+				09DBB9F4BEA477176B1AB4BF /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				44B1005F28F48817005B97EE /* PBXTargetDependency */,
+			);
+			name = AssistantWatchForGPSTODO;
+			productName = AssistantWatchForGPSTODO;
+			productReference = 44B1005128F48815005B97EE /* AssistantWatchForGPSTODO.app */;
+			productType = "com.apple.product-type.application.watchapp2";
+		};
+		44B1005B28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 44B1007028F48818005B97EE /* Build configuration list for PBXNativeTarget "AssistantWatchForGPSTODO WatchKit Extension" */;
+			buildPhases = (
+				2B06C4ABC38B21389FC7C38E /* [CP] Check Pods Manifest.lock */,
+				44B1005828F48816005B97EE /* Sources */,
+				44B1005928F48816005B97EE /* Frameworks */,
+				44B1005A28F48816005B97EE /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "AssistantWatchForGPSTODO WatchKit Extension";
+			productName = "AssistantWatchForGPSTODO WatchKit Extension";
+			productReference = 44B1005C28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension.appex */;
+			productType = "com.apple.product-type.watchkit2-extension";
 		};
 /* End PBXNativeTarget section */
 
@@ -207,6 +422,12 @@
 						CreatedOnToolsVersion = 13.3.1;
 						TestTargetID = 44B1001828F487BB005B97EE;
 					};
+					44B1005028F48815005B97EE = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
+					44B1005B28F48816005B97EE = {
+						CreatedOnToolsVersion = 13.3.1;
+					};
 				};
 			};
 			buildConfigurationList = 44B1001428F487BB005B97EE /* Build configuration list for PBXProject "GPS-Todo" */;
@@ -225,6 +446,8 @@
 				44B1001828F487BB005B97EE /* GPS-Todo */,
 				44B1003128F487BD005B97EE /* GPS-TodoTests */,
 				44B1003B28F487BD005B97EE /* GPS-TodoUITests */,
+				44B1005028F48815005B97EE /* AssistantWatchForGPSTODO */,
+				44B1005B28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension */,
 			);
 		};
 /* End PBXProject section */
@@ -235,6 +458,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44B1002C28F487BD005B97EE /* LaunchScreen.storyboard in Resources */,
+				44B1007928F48A99005B97EE /* GoogleService-Info.plist in Resources */,
 				44B1002928F487BD005B97EE /* Assets.xcassets in Resources */,
 				44B1002428F487BB005B97EE /* Main.storyboard in Resources */,
 			);
@@ -254,7 +478,188 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44B1004F28F48815005B97EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B1005728F48816005B97EE /* Assets.xcassets in Resources */,
+				44B1005528F48815005B97EE /* Interface.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44B1005A28F48816005B97EE /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B1006A28F48818005B97EE /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		2B06C4ABC38B21389FC7C38E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssistantWatchForGPSTODO WatchKit Extension-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		77AA826DB0E8F7EC1012703F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPS-TodoTests/Pods-GPS-TodoTests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPS-TodoTests/Pods-GPS-TodoTests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GPS-TodoTests/Pods-GPS-TodoTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		88F6E2E4B668628CD469229E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPS-Todo-GPS-TodoUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8D2099C8747185AB2A853263 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPS-TodoTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D0D7AB040C25EBF6FE7B9933 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-GPS-Todo-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D4B880A2FE02F9AFAB5A1C63 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPS-Todo-GPS-TodoUITests/Pods-GPS-Todo-GPS-TodoUITests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPS-Todo-GPS-TodoUITests/Pods-GPS-Todo-GPS-TodoUITests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GPS-Todo-GPS-TodoUITests/Pods-GPS-Todo-GPS-TodoUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E53A666008306496C8203C7F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FD890E18FD7F1A2912AA2CE1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-AssistantWatchForGPSTODO-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		44B1001528F487BB005B97EE /* Sources */ = {
@@ -264,6 +669,7 @@
 				44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */,
 				44B1002128F487BB005B97EE /* ViewController.swift in Sources */,
 				44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */,
+				44B1007C28F48D62005B97EE /* AdMob.swift in Sources */,
 				44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -285,6 +691,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		44B1005828F48816005B97EE /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				44B1006628F48817005B97EE /* NotificationController.swift in Sources */,
+				44B1006828F48817005B97EE /* ComplicationController.swift in Sources */,
+				44B1006428F48817005B97EE /* ExtensionDelegate.swift in Sources */,
+				44B1006228F48817005B97EE /* InterfaceController.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -297,6 +714,16 @@
 			isa = PBXTargetDependency;
 			target = 44B1001828F487BB005B97EE /* GPS-Todo */;
 			targetProxy = 44B1003D28F487BD005B97EE /* PBXContainerItemProxy */;
+		};
+		44B1005F28F48817005B97EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44B1005B28F48816005B97EE /* AssistantWatchForGPSTODO WatchKit Extension */;
+			targetProxy = 44B1005E28F48817005B97EE /* PBXContainerItemProxy */;
+		};
+		44B1006E28F48818005B97EE /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 44B1005028F48815005B97EE /* AssistantWatchForGPSTODO */;
+			targetProxy = 44B1006D28F48818005B97EE /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -315,6 +742,14 @@
 				44B1002B28F487BD005B97EE /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		44B1005328F48815005B97EE /* Interface.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44B1005428F48815005B97EE /* Base */,
+			);
+			name = Interface.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -436,6 +871,7 @@
 		};
 		44B1004728F487BD005B97EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C125AEA4AAEAABAC7C7F6A0D /* Pods-GPS-Todo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -464,6 +900,7 @@
 		};
 		44B1004828F487BD005B97EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 499114AF779D1C29EDF1C74E /* Pods-GPS-Todo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -492,6 +929,7 @@
 		};
 		44B1004A28F487BD005B97EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EA03BABA840F7C606EEC1793 /* Pods-GPS-TodoTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -512,6 +950,7 @@
 		};
 		44B1004B28F487BD005B97EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15AEDB290DCFBA0987E701E4 /* Pods-GPS-TodoTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -532,6 +971,7 @@
 		};
 		44B1004D28F487BD005B97EE /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 11BFA085E9979C0223E22AA5 /* Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -550,6 +990,7 @@
 		};
 		44B1004E28F487BD005B97EE /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F0B758E41FE04A679F83EFB4 /* Pods-GPS-Todo-GPS-TodoUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -563,6 +1004,122 @@
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "GPS-Todo";
+			};
+			name = Release;
+		};
+		44B1007128F48818005B97EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5CAFEC4803F285F1C6EE38BD /* Pods-AssistantWatchForGPSTODO WatchKit Extension.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6S2SA26VAN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AssistantWatchForGPSTODO WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "AssistantWatchForGPSTODO WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bgsmm.GPS-Todo.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		44B1007228F48818005B97EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 872CF28F35100E4089DE15B3 /* Pods-AssistantWatchForGPSTODO WatchKit Extension.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_COMPLICATION_NAME = Complication;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6S2SA26VAN;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "AssistantWatchForGPSTODO WatchKit Extension/Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "AssistantWatchForGPSTODO WatchKit Extension";
+				INFOPLIST_KEY_CLKComplicationPrincipalClass = "$(PRODUCT_MODULE_NAME).ComplicationController";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INFOPLIST_KEY_WKExtensionDelegateClassName = "$(PRODUCT_MODULE_NAME).ExtensionDelegate";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bgsmm.GPS-Todo.watchkitapp.watchkitextension";
+				PRODUCT_NAME = "${TARGET_NAME}";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Release;
+		};
+		44B1007528F48818005B97EE /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5160995558F6F0D7692A99F0 /* Pods-AssistantWatchForGPSTODO.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6S2SA26VAN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = AssistantWatchForGPSTODO_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = AssistantWatchForGPSTODO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.bgsmm.GPS-Todo";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bgsmm.GPS-Todo.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
+			};
+			name = Debug;
+		};
+		44B1007628F48818005B97EE /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 793814F44560494805B36D68 /* Pods-AssistantWatchForGPSTODO.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 6S2SA26VAN;
+				GENERATE_INFOPLIST_FILE = YES;
+				IBSC_MODULE = AssistantWatchForGPSTODO_WatchKit_Extension;
+				INFOPLIST_KEY_CFBundleDisplayName = AssistantWatchForGPSTODO;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
+				INFOPLIST_KEY_WKCompanionAppBundleIdentifier = "com.bgsmm.GPS-Todo";
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.bgsmm.GPS-Todo.watchkitapp";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = watchos;
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = 4;
+				WATCHOS_DEPLOYMENT_TARGET = 8.5;
 			};
 			name = Release;
 		};
@@ -601,6 +1158,24 @@
 			buildConfigurations = (
 				44B1004D28F487BD005B97EE /* Debug */,
 				44B1004E28F487BD005B97EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44B1007028F48818005B97EE /* Build configuration list for PBXNativeTarget "AssistantWatchForGPSTODO WatchKit Extension" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B1007128F48818005B97EE /* Debug */,
+				44B1007228F48818005B97EE /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		44B1007428F48818005B97EE /* Build configuration list for PBXNativeTarget "AssistantWatchForGPSTODO" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				44B1007528F48818005B97EE /* Debug */,
+				44B1007628F48818005B97EE /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

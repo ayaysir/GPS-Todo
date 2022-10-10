@@ -1,0 +1,12 @@
+# mac system file
+.DS_Store
+
+# CocoaPods
+podfile.lock
+Pods/
+
+# Config files
+GPS-Todo/GoogleService-Info.plist
+
+# Project
+GPS-Todo/AdMob/
