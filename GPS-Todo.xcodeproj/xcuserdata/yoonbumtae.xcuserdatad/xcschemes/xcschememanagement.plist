@@ -7,22 +7,22 @@
 		<key>AssistantWatchForGPSTODO (Complication).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>35</integer>
+			<integer>68</integer>
 		</dict>
 		<key>AssistantWatchForGPSTODO (Notification).xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>34</integer>
+			<integer>67</integer>
 		</dict>
 		<key>AssistantWatchForGPSTODO.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>33</integer>
+			<integer>65</integer>
 		</dict>
 		<key>GPS-Todo.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>32</integer>
+			<integer>66</integer>
 		</dict>
 	</dict>
 </dict>

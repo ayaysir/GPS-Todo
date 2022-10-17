@@ -33,11 +33,13 @@ target 'GPS-Todo' do
   # For example, to use Firebase Authentication and Cloud Firestore
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  
+  pod 'FirebaseUI'
 
   # admob
   pod 'Google-Mobile-Ads-SDK'
 
-  #RxSwift
+  # RxSwift
   pod 'RxSwift', '6.5.0'
   pod 'RxCocoa', '6.5.0'
 
