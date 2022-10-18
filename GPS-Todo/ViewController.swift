@@ -7,13 +7,14 @@
 
 import UIKit
 import FirebaseEmailAuthUI
+import FirebaseGoogleAuthUI
 
 class ViewController: UIViewController {
     
     @IBOutlet weak var btnLogInOut: UIButton!
     @IBOutlet weak var lblUserStatus: UILabel!
     
-    // Class Variables
+    // Instance Variables
     var handle: AuthStateDidChangeListenerHandle!
     
     override func viewDidLoad() {
@@ -41,30 +42,34 @@ class ViewController: UIViewController {
             return
         }
         
-        let authUI = FUIAuth.defaultAuthUI()
-        authUI?.delegate = self
+        guard let authUI = FUIAuth.defaultAuthUI() else {
+            return
+        }
+        authUI.delegate = self
         
-        
-        let providers = [FUIEmailAuth()]
-        authUI?.providers = providers
+        let providers: [FUIAuthProvider] = [
+            FUIEmailAuth(),
+            FUIGoogleAuth(authUI: authUI),
+        ]
+        authUI.providers = providers
         
         // ⚠️: 이용약관과 개인정보보정책은 반드시 쌍으로 추가해야 함
-        
         // 이용약관
         let kFirebaseTermsOfService = URL(string: "https://firebase.google.com/terms/")!
-        authUI?.tosurl = kFirebaseTermsOfService
+        authUI.tosurl = kFirebaseTermsOfService
         
         // 개인정보 보호정책
         let kFirebasePrivacyPolicy = URL(string: "https://policies.google.com/privacy")!
-        authUI?.privacyPolicyURL = kFirebasePrivacyPolicy
+        authUI.privacyPolicyURL = kFirebasePrivacyPolicy
         
         // let authViewController = authUI?.authViewController() // 기본 제공 뷰 컨트롤러
-        let authVC2 = LoginCustomViewController(authUI: authUI!)
-        let naviVC = UINavigationController(rootViewController: authVC2)
-        naviVC.presentationController?.delegate = self
-        naviVC.isNavigationBarHidden = true
-        
         // self.present(authViewController!, animated: true)
+        
+        let customLoginVC = LoginCustomViewController(authUI: authUI)
+        let naviVC = UINavigationController(rootViewController: customLoginVC)
+        naviVC.presentationController?.delegate = self
+        // naviVC.isNavigationBarHidden = true
+        
         self.present(naviVC, animated: true)
     }
 
