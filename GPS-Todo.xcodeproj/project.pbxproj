@@ -11,6 +11,10 @@
 		44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BAD28FDB71E00C3D4DA /* LoginCustomViewController.swift */; };
 		44298BB128FDC0EB00C3D4DA /* CustomEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BB028FDC0EB00C3D4DA /* CustomEmailViewController.swift */; };
 		44298BB628FF19F000C3D4DA /* RandomNonceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BB528FF19F000C3D4DA /* RandomNonceString.swift */; };
+		44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BB72900707E00C3D4DA /* PasswordSignUpViewController.swift */; };
+		44298BBA2900707F00C3D4DA /* PasswordSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44298BB82900707E00C3D4DA /* PasswordSignUpViewController.xib */; };
+		44298BBD290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup in Sources */ = {isa = PBXBuildFile; fileRef = 44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */; };
+		44298BBF2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup in Resources */ = {isa = PBXBuildFile; fileRef = 44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */; };
 		44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001C28F487BB005B97EE /* AppDelegate.swift */; };
 		44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001E28F487BB005B97EE /* SceneDelegate.swift */; };
 		44B1002128F487BB005B97EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002028F487BB005B97EE /* ViewController.swift */; };
@@ -101,6 +105,11 @@
 		44298BB028FDC0EB00C3D4DA /* CustomEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmailViewController.swift; sourceTree = "<group>"; };
 		44298BB228FF168900C3D4DA /* GPS-Todo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GPS-Todo.entitlements"; sourceTree = "<group>"; };
 		44298BB528FF19F000C3D4DA /* RandomNonceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNonceString.swift; sourceTree = "<group>"; };
+		44298BB72900707E00C3D4DA /* PasswordSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSignUpViewController.swift; sourceTree = "<group>"; };
+		44298BB82900707E00C3D4DA /* PasswordSignUpViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PasswordSignUpViewController.xib; sourceTree = "<group>"; };
+		44298BBB2900728500C3D4DA /* FUIAdvancedPasswordSignUpViewController.h_backup */ = {isa = PBXFileReference; lastKnownFileType = text; path = FUIAdvancedPasswordSignUpViewController.h_backup; sourceTree = "<group>"; };
+		44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */ = {isa = PBXFileReference; lastKnownFileType = text; path = FUIAdvancedPasswordSignUpViewController.m_backup; sourceTree = "<group>"; };
+		44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FUIAdvancedPasswordSignUpViewController.xib_backup; sourceTree = "<group>"; };
 		44B1001928F487BB005B97EE /* GPS-Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS-Todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B1001C28F487BB005B97EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B1001E28F487BB005B97EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -200,6 +209,11 @@
 			children = (
 				44298BAD28FDB71E00C3D4DA /* LoginCustomViewController.swift */,
 				44298BB028FDC0EB00C3D4DA /* CustomEmailViewController.swift */,
+				44298BB72900707E00C3D4DA /* PasswordSignUpViewController.swift */,
+				44298BB82900707E00C3D4DA /* PasswordSignUpViewController.xib */,
+				44298BBB2900728500C3D4DA /* FUIAdvancedPasswordSignUpViewController.h_backup */,
+				44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */,
+				44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */,
 			);
 			path = FUI_SubViewController;
 			sourceTree = "<group>";
@@ -456,6 +470,7 @@
 				TargetAttributes = {
 					44B1001828F487BB005B97EE = {
 						CreatedOnToolsVersion = 13.3.1;
+						LastSwiftMigration = 1330;
 					};
 					44B1003128F487BD005B97EE = {
 						CreatedOnToolsVersion = 13.3.1;
@@ -502,6 +517,8 @@
 			files = (
 				44B1002C28F487BD005B97EE /* LaunchScreen.storyboard in Resources */,
 				44B1007928F48A99005B97EE /* GoogleService-Info.plist in Resources */,
+				44298BBF2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup in Resources */,
+				44298BBA2900707F00C3D4DA /* PasswordSignUpViewController.xib in Resources */,
 				44B1002928F487BD005B97EE /* Assets.xcassets in Resources */,
 				44B1002428F487BB005B97EE /* Main.storyboard in Resources */,
 			);
@@ -711,9 +728,11 @@
 			files = (
 				44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */,
 				44B1002128F487BB005B97EE /* ViewController.swift in Sources */,
+				44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */,
 				44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */,
 				44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */,
 				44298BB128FDC0EB00C3D4DA /* CustomEmailViewController.swift in Sources */,
+				44298BBD290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup in Sources */,
 				44298BB628FF19F000C3D4DA /* RandomNonceString.swift in Sources */,
 				44B1007C28F48D62005B97EE /* AdMob.swift in Sources */,
 				44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */,
@@ -921,6 +940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "GPS-Todo/GPS-Todo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -940,6 +960,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.bgsmm.GPS-Todo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -951,6 +972,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = "GPS-Todo/GPS-Todo.entitlements";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
