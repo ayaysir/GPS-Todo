@@ -9,6 +9,8 @@ import UIKit
 import FirebaseAuth
 import FirebaseAuthUI
 import FirebaseEmailAuthUI
+import RxSwift
+import RxCocoa
 
 /// @var kCellReuseIdentifier
 /// The reuse identifier for table view cell.
@@ -57,10 +59,35 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
     private var passwordField: UITextField?
     
     private let OVERLAY_TAG = 39194456
+    private var progressView: UIProgressView?
     
     /// @var _tableView
     /// The @c UITableView used to store all UI elements.
     @IBOutlet weak var tableView: UITableView!
+    
+    // RxSwift (나중에 뷰모델로 옮김)
+    var password = BehaviorRelay<String>(value: "")
+    var isAvailablePassword: Bool = false
+    var checkPwdStrength: Observable<Int> {
+        let regexes = [
+            "[a-z]+",
+            "[A-Z]+",
+            "[0-9]+",
+            "[$@#&!]+",
+        ]
+        
+        return password.asObservable()
+            .map { password in
+                var strength = 0
+                
+                regexes.forEach { regex in
+                    if password.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil {
+                        strength += 1
+                    }
+                }
+                return strength
+            }
+    }
     
     convenience init(
         authUI: FUIAuth,
@@ -101,9 +128,38 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
         
         self.enableDynamicCellHeight(for: tableView)
         
-        if #available(iOS 13.0, *) {
-            tableView.backgroundColor = UIColor.systemBackground
-        }
+        tableView.backgroundColor = UIColor.systemBackground
+        
+        // 패스워드 체크
+        _ = checkPwdStrength.subscribe(onNext: { [unowned self] strength in
+            var progressColor: UIColor = .red
+            
+            switch strength {
+            case 2, 3:
+                progressColor = .orange
+            case 4:
+                progressColor = .systemGreen
+            default:
+                progressColor = .red
+                
+            }
+            
+            let count = password.value.count
+            let countCondition = count >= 6 && count <= 16
+            
+            // print("strength:", strength, password.value)
+            // print("countCondition:", countCondition)
+            
+            if !countCondition {
+                progressColor = .red
+            }
+            self.isAvailablePassword = strength >= 2 && countCondition
+            saveButtonItem.isEnabled = self.isAvailablePassword
+            
+            self.progressView?.progressTintColor = progressColor
+            self.progressView?.setProgress(Float(strength) / 4.0, animated: true)
+            
+        })
     }
     
     override func viewDidLayoutSubviews() {
@@ -135,6 +191,11 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
         
         if password.count <= 0 {
             showAlert(withMessage: FUILocalizedString(kStr_InvalidPasswordError))
+            return
+        }
+        
+        if !isAvailablePassword {
+            showAlert(withMessage: "패스워드는 안전도 2 이상이어야 합니다.")
             return
         }
 
@@ -246,9 +307,6 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
     }
     
     func toggleOverlay(_ isOverlay: Bool) {
-        
-        
-        
         let overlay = UIView(frame: CGRect(x: 0, y: 0, width: 1000, height: 1000))
         overlay.backgroundColor = .black
         overlay.alpha = 0.05
@@ -294,14 +352,22 @@ extension PasswordSignUpViewController: UITextFieldDelegate {
 
 extension PasswordSignUpViewController: UITableViewDelegate, UITableViewDataSource {
     
-    // MARK: Table View Delegate & DataSource
+    // MARK: - Table View Delegate & DataSource
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if requireDisplayName {
-            return 3
+            return 4
         } else {
-            return 2
+            return 3
         }
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        if (requireDisplayName && indexPath.row == 3) || (!requireDisplayName && indexPath.row == 2) {
+            return 10
+        }
+        
+        return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -323,61 +389,31 @@ extension PasswordSignUpViewController: UITableViewDelegate, UITableViewDataSour
         cell.textField.delegate = self
         
         if indexPath.row == 0 {
-            cell.label.text = FUILocalizedString(kStr_Email)
-            cell.accessibilityIdentifier = kEmailSignUpCellAccessibilityID
-            cell.textField.isEnabled = false
-            emailField = cell.textField
-            emailField?.text = email
-            emailField?.placeholder = FUILocalizedString(kStr_EnterYourEmail)
-            emailField?.isSecureTextEntry = false
-            emailField?.returnKeyType = .next
-            emailField?.keyboardType = .emailAddress
-            emailField?.autocorrectionType = .no
-            emailField?.autocapitalizationType = .none
-            if #available(iOS 11.0, *) {
-                emailField?.textContentType = .username
-            }
-        } else if indexPath.row == 1 {
-            if requireDisplayName {
-                cell.label.text = FUILocalizedString(kStr_Name)
-                cell.accessibilityIdentifier = kNameSignUpCellAccessibilityID
-                nameField = cell.textField
-                nameField?.placeholder = FUILocalizedString(kStr_FirstAndLastName)
-                nameField?.isSecureTextEntry = false
-                nameField?.returnKeyType = .next
-                nameField?.keyboardType = .default
-                nameField?.autocapitalizationType = .words
-                
-                if #available(iOS 10.0, *) {
-                    nameField?.textContentType = .name
-                } else {
-                    cell.label.text = FUILocalizedString(kStr_Password)
-                    cell.accessibilityIdentifier = kPasswordSignUpCellAccessibilityID
-                    passwordField = cell.textField
-                    passwordField?.placeholder = FUILocalizedString(kStr_ChoosePassword)
-                    passwordField?.isSecureTextEntry = true
-                    passwordField?.rightView = visibilityToggleButtonForPasswordField()
-                    passwordField?.rightViewMode = .always
-                    passwordField?.returnKeyType = .next
-                    passwordField?.keyboardType = .default
-                    
-                        passwordField?.textContentType = .password
-                    
-                }
-            }
-        } else if indexPath.row == 2 {
-            cell.label.text = FUILocalizedString(kStr_Password)
-            cell.accessibilityIdentifier = kPasswordSignUpCellAccessibilityID
-            passwordField = cell.textField
-            passwordField?.placeholder = FUILocalizedString(kStr_ChoosePassword)
-            passwordField?.isSecureTextEntry = true
-            passwordField?.rightViewMode = .always
-            passwordField?.returnKeyType = .next
-            passwordField?.keyboardType = .default
-
-            passwordField?.textContentType = .password
+            setEmailField(cell: cell)
         }
         
+        if requireDisplayName {
+            switch indexPath.row {
+            case 1:
+                setNameField(cell: cell)
+            case 2:
+                setPasswordField(cell: cell)
+            case 3:
+                return pwdStrengthProgressBar()
+            default:
+                break
+            }
+        } else {
+            switch indexPath.row {
+            case 1:
+                setPasswordField(cell: cell)
+            case 2:
+                break
+            default:
+                break
+            }
+        }
+  
         cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
         let emailFieldText = emailField?.text ?? ""
@@ -385,6 +421,59 @@ extension PasswordSignUpViewController: UITableViewDelegate, UITableViewDataSour
         let username = nameField?.text ?? ""
         
         self.didChange(email: emailFieldText, password: pwdFieldText, userName: username)
+        return cell
+    }
+    
+    private func setEmailField(cell: FUIAuthTableViewCell) {
+        cell.label.text = FUILocalizedString(kStr_Email)
+        cell.accessibilityIdentifier = kEmailSignUpCellAccessibilityID
+        cell.textField.isEnabled = false
+        emailField = cell.textField
+        emailField?.text = email
+        emailField?.placeholder = FUILocalizedString(kStr_EnterYourEmail)
+        emailField?.isSecureTextEntry = false
+        emailField?.returnKeyType = .next
+        emailField?.keyboardType = .emailAddress
+        emailField?.autocorrectionType = .no
+        emailField?.autocapitalizationType = .none
+        emailField?.textContentType = .username
+    }
+    
+    private func setNameField(cell: FUIAuthTableViewCell) {
+        cell.label.text = FUILocalizedString(kStr_Name)
+        cell.accessibilityIdentifier = kNameSignUpCellAccessibilityID
+        nameField = cell.textField
+        nameField?.placeholder = FUILocalizedString(kStr_FirstAndLastName)
+        nameField?.isSecureTextEntry = false
+        nameField?.returnKeyType = .next
+        nameField?.keyboardType = .default
+        nameField?.autocapitalizationType = .words
+        nameField?.textContentType = .name
+    }
+    
+    private func setPasswordField(cell: FUIAuthTableViewCell) {
+        cell.label.text = FUILocalizedString(kStr_Password)
+        cell.accessibilityIdentifier = kPasswordSignUpCellAccessibilityID
+        passwordField = cell.textField
+        passwordField?.placeholder = FUILocalizedString(kStr_ChoosePassword)
+        passwordField?.isSecureTextEntry = true
+        passwordField?.rightView = visibilityToggleButtonForPasswordField()
+        passwordField?.rightViewMode = .always
+        passwordField?.returnKeyType = .next
+        passwordField?.keyboardType = .default
+        passwordField?.textContentType = .password
+        
+        _ = passwordField?.rx.text.map({ $0 ?? "" }).bind(to: password)
+        
+    }
+    
+    private func pwdStrengthProgressBar() -> UITableViewCell {
+        let frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 10)
+        let cell = UITableViewCell()
+        progressView = UIProgressView(frame: frame)
+        progressView?.progressTintColor = .red
+        progressView?.progress = 0.0
+        cell.contentView.addSubview(progressView!)
         return cell
     }
 }
