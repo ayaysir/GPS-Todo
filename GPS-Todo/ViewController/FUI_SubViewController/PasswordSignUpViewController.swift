@@ -12,83 +12,52 @@ import FirebaseEmailAuthUI
 import RxSwift
 import RxCocoa
 
-/// @var kCellReuseIdentifier
 /// The reuse identifier for table view cell.
 private let kCellReuseIdentifier = "cellReuseIdentifier"
 
-/// @var kEmailSignUpCellAccessibilityID
 /// The Accessibility Identifier for the @c email cell.
 private let kEmailSignUpCellAccessibilityID = "EmailSignUpCellAccessibilityID"
 
-/// @var kPasswordSignUpCellAccessibilityID
 /// The Accessibility Identifier for the @c password cell.
 private let kPasswordSignUpCellAccessibilityID = "PasswordSignUpCellAccessibilityID"
 
-/// @var kNameSignUpCellAccessibilityID
 /// The Accessibility Identifier for the @c name cell.
 private let kNameSignUpCellAccessibilityID = "NameSignUpCellAccessibilityID"
 
-/// @var kSaveButtonAccessibilityID
 /// The Accessibility Identifier for the @c next button.
 private let kSaveButtonAccessibilityID = "SaveButtonAccessibilityID"
 
-/// @var kTextFieldRightViewSize
 /// The height and width of the @c rightView of the password text field.
 private let kTextFieldRightViewSize: CGFloat = 36.0
 
 class PasswordSignUpViewController: FUIPasswordSignUpViewController {
     
-    /// @var _email
     /// The @c email address of the user from the previous screen.
     private var email: String?
     
-    /// @var _emailField
     /// The @c UITextField that user enters email address into.
     private var emailField: UITextField?
     
-    /// @var _nameField
     /// The @c UITextField that user enters name into.
     private var nameField: UITextField?
     
-    /// @var requireDisplayName
     /// Indicate weather display name field is required.
     private var requireDisplayName = false
     
-    /// @var _passwordField
     /// The @c UITextField that user enters password into.
     private var passwordField: UITextField?
     
+    /// 오버레이 구분용 태그
     private let OVERLAY_TAG = 39194456
+    /// 패스워드 안전도 측정 프로그레스 바
     private var progressView: UIProgressView?
     
-    /// @var _tableView
     /// The @c UITableView used to store all UI elements.
     @IBOutlet weak var tableView: UITableView!
     
-    // RxSwift (나중에 뷰모델로 옮김)
-    var password = BehaviorRelay<String>(value: "")
-    var isAvailablePassword: Bool = false
-    var checkPwdStrength: Observable<Int> {
-        let regexes = [
-            "[a-z]+",
-            "[A-Z]+",
-            "[0-9]+",
-            "[$@#&!]+",
-        ]
-        
-        return password.asObservable()
-            .map { password in
-                var strength = 0
-                
-                regexes.forEach { regex in
-                    if password.range(of: regex, options: .regularExpression, range: nil, locale: nil) != nil {
-                        strength += 1
-                    }
-                }
-                return strength
-            }
-    }
-    
+    /// 뷰모델
+    var viewModel = PasswordSignUpViewModel()
+
     convenience init(
         authUI: FUIAuth,
         email: String?,
@@ -130,8 +99,10 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
         
         tableView.backgroundColor = UIColor.systemBackground
         
-        // 패스워드 체크
-        _ = checkPwdStrength.subscribe(onNext: { [unowned self] strength in
+        // Save(Submit) 버튼 활성화
+        _ = viewModel.isValid.bind(to: saveButtonItem.rx.isEnabled)
+        
+        _ = viewModel.checkPwdStrength.subscribe(onNext: { [unowned self] strength in
             var progressColor: UIColor = .red
             
             switch strength {
@@ -144,21 +115,12 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
                 
             }
             
-            let count = password.value.count
-            let countCondition = count >= 6 && count <= 16
-            
-            // print("strength:", strength, password.value)
-            // print("countCondition:", countCondition)
-            
-            if !countCondition {
+            if !viewModel.isAvailablePassword {
                 progressColor = .red
             }
-            self.isAvailablePassword = strength >= 2 && countCondition
-            saveButtonItem.isEnabled = self.isAvailablePassword
             
             self.progressView?.progressTintColor = progressColor
             self.progressView?.setProgress(Float(strength) / 4.0, animated: true)
-            
         })
     }
     
@@ -194,7 +156,7 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
             return
         }
         
-        if !isAvailablePassword {
+        if !viewModel.isAvailablePassword {
             showAlert(withMessage: "패스워드는 안전도 2 이상이어야 합니다.")
             return
         }
@@ -277,33 +239,6 @@ class PasswordSignUpViewController: FUIPasswordSignUpViewController {
         self.navigationController?.dismiss(animated: true) {
             self.authUI.invokeResultCallback(with: authDataResult, url: nil, error: error)
         }
-    }
-    
-    @objc func textFieldDidChange() {
-        guard let emailFieldText = emailField?.text,
-              let pwdFieldText = passwordField?.text,
-              let username = nameField?.text else {
-            print(#line, "guard error")
-            return
-        }
-        
-        self.didChange(email: emailFieldText, password: pwdFieldText, userName: username)
-    }
-    
-    @objc override func didChangeEmail(_ email: String, orPassword password: String, orUserName username: String) {
-        var enableActionButton = email.count > 0 && password.count > 0
-        if requireDisplayName {
-            enableActionButton = enableActionButton && username.count > 0
-        }
-        navigationItem.rightBarButtonItem?.isEnabled = enableActionButton
-    }
-    
-    func didChange(email: String, password: String, userName: String) {
-        var enableActionButton = email.count > 0 && password.count > 0
-        if requireDisplayName {
-            enableActionButton = enableActionButton && userName.count > 0
-        }
-        self.navigationItem.rightBarButtonItem?.isEnabled = enableActionButton
     }
     
     func toggleOverlay(_ isOverlay: Bool) {
@@ -413,14 +348,7 @@ extension PasswordSignUpViewController: UITableViewDelegate, UITableViewDataSour
                 break
             }
         }
-  
-        cell.textField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
         
-        let emailFieldText = emailField?.text ?? ""
-        let pwdFieldText = passwordField?.text ?? ""
-        let username = nameField?.text ?? ""
-        
-        self.didChange(email: emailFieldText, password: pwdFieldText, userName: username)
         return cell
     }
     
@@ -449,6 +377,8 @@ extension PasswordSignUpViewController: UITableViewDelegate, UITableViewDataSour
         nameField?.keyboardType = .default
         nameField?.autocapitalizationType = .words
         nameField?.textContentType = .name
+        
+        _ = nameField?.rx.text.map { $0 ?? "" }.bind(to: viewModel.name)
     }
     
     private func setPasswordField(cell: FUIAuthTableViewCell) {
@@ -463,7 +393,7 @@ extension PasswordSignUpViewController: UITableViewDelegate, UITableViewDataSour
         passwordField?.keyboardType = .default
         passwordField?.textContentType = .password
         
-        _ = passwordField?.rx.text.map({ $0 ?? "" }).bind(to: password)
+        _ = passwordField?.rx.text.map { $0 ?? "" }.bind(to: viewModel.password)
         
     }
     

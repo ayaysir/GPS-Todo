@@ -15,6 +15,7 @@
 		44298BBA2900707F00C3D4DA /* PasswordSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44298BB82900707E00C3D4DA /* PasswordSignUpViewController.xib */; };
 		44298BBD290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup in Sources */ = {isa = PBXBuildFile; fileRef = 44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */; };
 		44298BBF2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup in Resources */ = {isa = PBXBuildFile; fileRef = 44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */; };
+		4437F1AB2905957F0034624B /* PasswordSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1AA2905957F0034624B /* PasswordSignUpViewModel.swift */; };
 		44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001C28F487BB005B97EE /* AppDelegate.swift */; };
 		44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001E28F487BB005B97EE /* SceneDelegate.swift */; };
 		44B1002128F487BB005B97EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002028F487BB005B97EE /* ViewController.swift */; };
@@ -110,6 +111,7 @@
 		44298BBB2900728500C3D4DA /* FUIAdvancedPasswordSignUpViewController.h_backup */ = {isa = PBXFileReference; lastKnownFileType = text; path = FUIAdvancedPasswordSignUpViewController.h_backup; sourceTree = "<group>"; };
 		44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */ = {isa = PBXFileReference; lastKnownFileType = text; path = FUIAdvancedPasswordSignUpViewController.m_backup; sourceTree = "<group>"; };
 		44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FUIAdvancedPasswordSignUpViewController.xib_backup; sourceTree = "<group>"; };
+		4437F1AA2905957F0034624B /* PasswordSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSignUpViewModel.swift; sourceTree = "<group>"; };
 		44B1001928F487BB005B97EE /* GPS-Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS-Todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B1001C28F487BB005B97EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B1001E28F487BB005B97EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -234,6 +236,22 @@
 			path = Util;
 			sourceTree = "<group>";
 		};
+		4437F1A8290595600034624B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4437F1A92905956D0034624B /* FUI_SubView */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4437F1A92905956D0034624B /* FUI_SubView */ = {
+			isa = PBXGroup;
+			children = (
+				4437F1AA2905957F0034624B /* PasswordSignUpViewModel.swift */,
+			);
+			path = FUI_SubView;
+			sourceTree = "<group>";
+		};
 		44B1001028F487BB005B97EE = {
 			isa = PBXGroup;
 			children = (
@@ -263,6 +281,7 @@
 		44B1001B28F487BB005B97EE /* GPS-Todo */ = {
 			isa = PBXGroup;
 			children = (
+				4437F1A8290595600034624B /* ViewModel */,
 				44298BB328FF19CC00C3D4DA /* Firebase */,
 				44298BB228FF168900C3D4DA /* GPS-Todo.entitlements */,
 				44298BAC28FDB70500C3D4DA /* ViewController */,
@@ -729,6 +748,7 @@
 				44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */,
 				44B1002128F487BB005B97EE /* ViewController.swift in Sources */,
 				44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */,
+				4437F1AB2905957F0034624B /* PasswordSignUpViewModel.swift in Sources */,
 				44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */,
 				44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */,
 				44298BB128FDC0EB00C3D4DA /* CustomEmailViewController.swift in Sources */,
