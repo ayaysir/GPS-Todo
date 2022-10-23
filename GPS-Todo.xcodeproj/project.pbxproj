@@ -9,13 +9,14 @@
 /* Begin PBXBuildFile section */
 		3234150654337ED332B97698 /* Pods_GPS_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */; };
 		44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BAD28FDB71E00C3D4DA /* LoginCustomViewController.swift */; };
-		44298BB128FDC0EB00C3D4DA /* CustomEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BB028FDC0EB00C3D4DA /* CustomEmailViewController.swift */; };
 		44298BB628FF19F000C3D4DA /* RandomNonceString.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BB528FF19F000C3D4DA /* RandomNonceString.swift */; };
 		44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44298BB72900707E00C3D4DA /* PasswordSignUpViewController.swift */; };
 		44298BBA2900707F00C3D4DA /* PasswordSignUpViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44298BB82900707E00C3D4DA /* PasswordSignUpViewController.xib */; };
 		44298BBD290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup in Sources */ = {isa = PBXBuildFile; fileRef = 44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */; };
 		44298BBF2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup in Resources */ = {isa = PBXBuildFile; fileRef = 44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */; };
 		4437F1AB2905957F0034624B /* PasswordSignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1AA2905957F0034624B /* PasswordSignUpViewModel.swift */; };
+		4437F1AF29059A2C0034624B /* EmailEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1AD29059A2C0034624B /* EmailEntryViewController.swift */; };
+		4437F1B029059A2C0034624B /* EmailEntryViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4437F1AE29059A2C0034624B /* EmailEntryViewController.xib */; };
 		44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001C28F487BB005B97EE /* AppDelegate.swift */; };
 		44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001E28F487BB005B97EE /* SceneDelegate.swift */; };
 		44B1002128F487BB005B97EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002028F487BB005B97EE /* ViewController.swift */; };
@@ -103,7 +104,6 @@
 		11BFA085E9979C0223E22AA5 /* Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig"; path = "Target Support Files/Pods-GPS-Todo-GPS-TodoUITests/Pods-GPS-Todo-GPS-TodoUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		15AEDB290DCFBA0987E701E4 /* Pods-GPS-TodoTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-TodoTests.release.xcconfig"; path = "Target Support Files/Pods-GPS-TodoTests/Pods-GPS-TodoTests.release.xcconfig"; sourceTree = "<group>"; };
 		44298BAD28FDB71E00C3D4DA /* LoginCustomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginCustomViewController.swift; sourceTree = "<group>"; };
-		44298BB028FDC0EB00C3D4DA /* CustomEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomEmailViewController.swift; sourceTree = "<group>"; };
 		44298BB228FF168900C3D4DA /* GPS-Todo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "GPS-Todo.entitlements"; sourceTree = "<group>"; };
 		44298BB528FF19F000C3D4DA /* RandomNonceString.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RandomNonceString.swift; sourceTree = "<group>"; };
 		44298BB72900707E00C3D4DA /* PasswordSignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSignUpViewController.swift; sourceTree = "<group>"; };
@@ -112,6 +112,8 @@
 		44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */ = {isa = PBXFileReference; lastKnownFileType = text; path = FUIAdvancedPasswordSignUpViewController.m_backup; sourceTree = "<group>"; };
 		44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = FUIAdvancedPasswordSignUpViewController.xib_backup; sourceTree = "<group>"; };
 		4437F1AA2905957F0034624B /* PasswordSignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordSignUpViewModel.swift; sourceTree = "<group>"; };
+		4437F1AD29059A2C0034624B /* EmailEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailEntryViewController.swift; sourceTree = "<group>"; };
+		4437F1AE29059A2C0034624B /* EmailEntryViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EmailEntryViewController.xib; sourceTree = "<group>"; };
 		44B1001928F487BB005B97EE /* GPS-Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS-Todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B1001C28F487BB005B97EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B1001E28F487BB005B97EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -209,13 +211,12 @@
 		44298BAF28FDC0B800C3D4DA /* FUI_SubViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4437F1AC290599A40034624B /* Backup */,
 				44298BAD28FDB71E00C3D4DA /* LoginCustomViewController.swift */,
-				44298BB028FDC0EB00C3D4DA /* CustomEmailViewController.swift */,
 				44298BB72900707E00C3D4DA /* PasswordSignUpViewController.swift */,
 				44298BB82900707E00C3D4DA /* PasswordSignUpViewController.xib */,
-				44298BBB2900728500C3D4DA /* FUIAdvancedPasswordSignUpViewController.h_backup */,
-				44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */,
-				44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */,
+				4437F1AD29059A2C0034624B /* EmailEntryViewController.swift */,
+				4437F1AE29059A2C0034624B /* EmailEntryViewController.xib */,
 			);
 			path = FUI_SubViewController;
 			sourceTree = "<group>";
@@ -250,6 +251,16 @@
 				4437F1AA2905957F0034624B /* PasswordSignUpViewModel.swift */,
 			);
 			path = FUI_SubView;
+			sourceTree = "<group>";
+		};
+		4437F1AC290599A40034624B /* Backup */ = {
+			isa = PBXGroup;
+			children = (
+				44298BBB2900728500C3D4DA /* FUIAdvancedPasswordSignUpViewController.h_backup */,
+				44298BBE2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup */,
+				44298BBC290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup */,
+			);
+			path = Backup;
 			sourceTree = "<group>";
 		};
 		44B1001028F487BB005B97EE = {
@@ -540,6 +551,7 @@
 				44298BBA2900707F00C3D4DA /* PasswordSignUpViewController.xib in Resources */,
 				44B1002928F487BD005B97EE /* Assets.xcassets in Resources */,
 				44B1002428F487BB005B97EE /* Main.storyboard in Resources */,
+				4437F1B029059A2C0034624B /* EmailEntryViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -749,9 +761,9 @@
 				44B1002128F487BB005B97EE /* ViewController.swift in Sources */,
 				44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */,
 				4437F1AB2905957F0034624B /* PasswordSignUpViewModel.swift in Sources */,
+				4437F1AF29059A2C0034624B /* EmailEntryViewController.swift in Sources */,
 				44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */,
 				44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */,
-				44298BB128FDC0EB00C3D4DA /* CustomEmailViewController.swift in Sources */,
 				44298BBD290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup in Sources */,
 				44298BB628FF19F000C3D4DA /* RandomNonceString.swift in Sources */,
 				44B1007C28F48D62005B97EE /* AdMob.swift in Sources */,

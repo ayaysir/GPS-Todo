@@ -13,7 +13,7 @@ class LoginCustomViewController: FUIAuthPickerViewController {
         super.viewDidLoad()
         
         let width = UIScreen.main.bounds.size.width
-        let height = UIScreen.main.bounds.size.height
+        // let height = UIScreen.main.bounds.size.height
         
         let imageView = UIImageView(image: UIImage(named: "StringQuartet"))
         view.addSubview(imageView)

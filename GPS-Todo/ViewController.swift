@@ -107,6 +107,10 @@ extension ViewController: FUIAuthDelegate {
         print(authDataResult.credential?.provider)
     }
     
+    func emailEntryViewController(forAuthUI authUI: FUIAuth) -> FUIEmailEntryViewController {
+        return EmailEntryViewController(nibName: "EmailEntryViewController", bundle: Bundle.main, authUI: authUI)
+    }
+    
     func passwordSignUpViewController(forAuthUI authUI: FUIAuth, email: String?, requireDisplayName: Bool) -> FUIPasswordSignUpViewController {
         return PasswordSignUpViewController(nibName: "PasswordSignUpViewController", bundle: Bundle.main, authUI: authUI, email: email, requireDisplayName: requireDisplayName)
     }
