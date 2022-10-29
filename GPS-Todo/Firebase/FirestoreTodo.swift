@@ -14,6 +14,10 @@ class FirestoreTodo {
     
     static let shared = FirestoreTodo()
     
+    typealias ErrorHandler = (_ err: Error) -> ()
+    typealias ReadAllCompletionHandler = (_ todos: [Todo]) -> ()
+    typealias QuerySnapshotListener = (QuerySnapshot?, Error?) -> ()
+    
     var db: Firestore!
     var todoRef: CollectionReference!
     
@@ -34,6 +38,12 @@ class FirestoreTodo {
     }
     
     func addPost(todoRequest request: Todo) {
+        addPost(todoRequest: request) { documentID in
+            print("Firestore>> Document added with ID: \(documentID)")
+        }
+    }
+    
+    func addPost(todoRequest request: Todo, completion: @escaping (_ documentID: String) -> ()) {
         var ref: DocumentReference? = nil
         
         do {
@@ -58,12 +68,34 @@ class FirestoreTodo {
                     return
                 }
                 
-                print("Firestore>> Document added with ID: \(ref.documentID)")
+                completion(ref.documentID)
             }
         } catch {
             print("Firestore>> Error from addPost-setData: ", error)
         }
     }
+    
+    private func querySnapshotListener(completionHandler: @escaping ReadAllCompletionHandler, errorHandler: ErrorHandler?) -> QuerySnapshotListener {
+        
+        return { snapshot, error in
+            if let error = error {
+                print("Firestore>> read failed", error)
+                return
+            }
+            
+            guard let snapshot = snapshot else {
+                print("Firestore>> QuerySnapshot is nil")
+                return
+            }
+            
+            let todos = snapshot.documents.compactMap { documentSnapshot in
+                try? documentSnapshot.data(as: Todo.self)
+            }
+            
+            completionHandler(todos)
+        }
+    }
+
     
     func readAll(completionHandler: @escaping ([Todo]) -> ()) {
         // 서버 업로드 시간 기준으로 내림차순
@@ -85,6 +117,12 @@ class FirestoreTodo {
             
             completionHandler(todos)
         }
+    }
+    
+    func listenAll(completionHandler: @escaping ([Todo]) -> ()) {
+        let query: Query = todoRef.order(by: Todo.CodingKeys.createdTimestamp.rawValue, descending: true)
+        query.addSnapshotListener(querySnapshotListener(completionHandler: completionHandler, errorHandler: nil))
+        
     }
     
     func deletePost(documentID: String) {

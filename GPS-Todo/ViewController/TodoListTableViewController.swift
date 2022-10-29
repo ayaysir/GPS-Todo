@@ -28,11 +28,16 @@ class TodoListTableViewController: UITableViewController {
         
         FirestoreTodo.shared.addPost(todoRequest: todo)
         
-        FirestoreTodo.shared.readAll { todos in
+        FirestoreTodo.shared.listenAll { todos in
             self.list = todos
             self.tableView.reloadData()
         }
     }
+    
+    @IBAction func addTodo(_ sender: Any) {
+        performSegue(withIdentifier: "Todo_Create_Segue", sender: nil)
+    }
+    
 
     // MARK: - Table view data source
 
@@ -55,6 +60,10 @@ class TodoListTableViewController: UITableViewController {
         cell.configure(todo: list[indexPath.row])
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "Todo_Detail_Segue", sender: nil)
     }
 
     /*
