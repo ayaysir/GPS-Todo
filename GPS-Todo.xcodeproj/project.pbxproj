@@ -23,9 +23,11 @@
 		4437F1E1290C50A00034624B /* TodoListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1E0290C50A00034624B /* TodoListTableViewController.swift */; };
 		4437F1E3290C5B150034624B /* TodoDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1E2290C5B150034624B /* TodoDetailTableViewController.swift */; };
 		4437F1E5290D989B0034624B /* TodoUpdateTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1E4290D989B0034624B /* TodoUpdateTableViewController.swift */; };
+		4437F1E9291023810034624B /* GPSLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1E8291023810034624B /* GPSLocationManager.swift */; };
+		4437F1EC29102A380034624B /* MKMapView+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437F1EB29102A380034624B /* MKMapView+.swift */; };
 		44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001C28F487BB005B97EE /* AppDelegate.swift */; };
 		44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1001E28F487BB005B97EE /* SceneDelegate.swift */; };
-		44B1002128F487BB005B97EE /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002028F487BB005B97EE /* ViewController.swift */; };
+		44B1002128F487BB005B97EE /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002028F487BB005B97EE /* MainViewController.swift */; };
 		44B1002428F487BB005B97EE /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 44B1002228F487BB005B97EE /* Main.storyboard */; };
 		44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44B1002528F487BB005B97EE /* GPS_Todo.xcdatamodeld */; };
 		44B1002928F487BD005B97EE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B1002828F487BD005B97EE /* Assets.xcassets */; };
@@ -125,10 +127,12 @@
 		4437F1E0290C50A00034624B /* TodoListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoListTableViewController.swift; sourceTree = "<group>"; };
 		4437F1E2290C5B150034624B /* TodoDetailTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoDetailTableViewController.swift; sourceTree = "<group>"; };
 		4437F1E4290D989B0034624B /* TodoUpdateTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoUpdateTableViewController.swift; sourceTree = "<group>"; };
+		4437F1E8291023810034624B /* GPSLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSLocationManager.swift; sourceTree = "<group>"; };
+		4437F1EB29102A380034624B /* MKMapView+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+.swift"; sourceTree = "<group>"; };
 		44B1001928F487BB005B97EE /* GPS-Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "GPS-Todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B1001C28F487BB005B97EE /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		44B1001E28F487BB005B97EE /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		44B1002028F487BB005B97EE /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		44B1002028F487BB005B97EE /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		44B1002328F487BB005B97EE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		44B1002628F487BB005B97EE /* GPS_Todo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GPS_Todo.xcdatamodel; sourceTree = "<group>"; };
 		44B1002828F487BD005B97EE /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -215,10 +219,9 @@
 		44298BAC28FDB70500C3D4DA /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				4437F1E629101CAD0034624B /* TodoList */,
 				44298BAF28FDC0B800C3D4DA /* FUI_SubViewController */,
-				4437F1E0290C50A00034624B /* TodoListTableViewController.swift */,
-				4437F1E4290D989B0034624B /* TodoUpdateTableViewController.swift */,
-				4437F1E2290C5B150034624B /* TodoDetailTableViewController.swift */,
+				44B1002028F487BB005B97EE /* MainViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -295,6 +298,32 @@
 			path = Firebase;
 			sourceTree = "<group>";
 		};
+		4437F1E629101CAD0034624B /* TodoList */ = {
+			isa = PBXGroup;
+			children = (
+				4437F1E0290C50A00034624B /* TodoListTableViewController.swift */,
+				4437F1E4290D989B0034624B /* TodoUpdateTableViewController.swift */,
+				4437F1E2290C5B150034624B /* TodoDetailTableViewController.swift */,
+			);
+			path = TodoList;
+			sourceTree = "<group>";
+		};
+		4437F1E7291023380034624B /* Wrapper */ = {
+			isa = PBXGroup;
+			children = (
+				4437F1E8291023810034624B /* GPSLocationManager.swift */,
+			);
+			path = Wrapper;
+			sourceTree = "<group>";
+		};
+		4437F1EA29102A2D0034624B /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				4437F1EB29102A380034624B /* MKMapView+.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
 		44B1001028F487BB005B97EE = {
 			isa = PBXGroup;
 			children = (
@@ -324,6 +353,8 @@
 		44B1001B28F487BB005B97EE /* GPS-Todo */ = {
 			isa = PBXGroup;
 			children = (
+				4437F1EA29102A2D0034624B /* Extension */,
+				4437F1E7291023380034624B /* Wrapper */,
 				4437F1DC290C4D860034624B /* ValueObject */,
 				4437F1A8290595600034624B /* ViewModel */,
 				44298BB328FF19CC00C3D4DA /* Firebase */,
@@ -333,7 +364,6 @@
 				44B1001C28F487BB005B97EE /* AppDelegate.swift */,
 				44B1007828F48A99005B97EE /* GoogleService-Info.plist */,
 				44B1001E28F487BB005B97EE /* SceneDelegate.swift */,
-				44B1002028F487BB005B97EE /* ViewController.swift */,
 				44B1002228F487BB005B97EE /* Main.storyboard */,
 				44B1002828F487BD005B97EE /* Assets.xcassets */,
 				44B1002A28F487BD005B97EE /* LaunchScreen.storyboard */,
@@ -798,7 +828,8 @@
 			files = (
 				44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */,
 				4437F1E1290C50A00034624B /* TodoListTableViewController.swift in Sources */,
-				44B1002128F487BB005B97EE /* ViewController.swift in Sources */,
+				4437F1E9291023810034624B /* GPSLocationManager.swift in Sources */,
+				44B1002128F487BB005B97EE /* MainViewController.swift in Sources */,
 				44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */,
 				4437F1DB290C4D050034624B /* FirestoreTodo.swift in Sources */,
 				4437F1AB2905957F0034624B /* PasswordSignUpViewModel.swift in Sources */,
@@ -812,6 +843,7 @@
 				4437F1DF290C4D9B0034624B /* Todo.swift in Sources */,
 				4437F1E5290D989B0034624B /* TodoUpdateTableViewController.swift in Sources */,
 				44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */,
+				4437F1EC29102A380034624B /* MKMapView+.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1023,11 +1055,15 @@
 				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "GPS-Todo/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To use this app, you must allow access to your current location information. Location information is encrypted and stored in a database.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "To use this app, you must allow access to your current location information. Location information is encrypted and stored in a database.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To use this app, you must allow access to your current location information. Location information is encrypted and stored in a database.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -1055,11 +1091,15 @@
 				DEVELOPMENT_TEAM = 6S2SA26VAN;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "GPS-Todo/Info.plist";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "To use this app, you must allow access to your current location information. Location information is encrypted and stored in a database.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "To use this app, you must allow access to your current location information. Location information is encrypted and stored in a database.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To use this app, you must allow access to your current location information. Location information is encrypted and stored in a database.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

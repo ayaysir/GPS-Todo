@@ -7,7 +7,6 @@
 
 import UIKit
 import MapKit
-
 import RxSwift
 import RxRelay
 import BGSMM_DevKit
@@ -19,7 +18,9 @@ class TodoUpdateTableViewController: UITableViewController {
     @IBOutlet weak var mapViewStart: MKMapView!
     @IBOutlet weak var barBtnSubmit: UIBarButtonItem!
     
-    
+    private let locationManager = GPSLocationManager()
+    private var lastLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
+    private let centerAnnotation = MKPointAnnotation()
     
     // ====== View Model ========= //
     var todoTitle = BehaviorRelay<String>(value: "")
@@ -32,7 +33,6 @@ class TodoUpdateTableViewController: UITableViewController {
                                         startCoord.asObservable()) { title, content, startCoord in
             
             return title.count >= 1 && content.count >= 1
-            
         }
     }
     
@@ -40,6 +40,21 @@ class TodoUpdateTableViewController: UITableViewController {
         super.viewDidLoad()
         
         mapViewStart.delegate = self
+        mapViewStart.setZoomByDelta(delta: pow(2, -13), animated: true)
+        mapViewStart.isScrollEnabled = false
+        centerAnnotation.title = "Current Location"
+        mapViewStart.addAnnotation(centerAnnotation)
+        
+        switch locationManager.authStatus {
+        case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
+            locationManager.instantStartUpdatingLocation(delegateTo: self)
+        case .restricted:
+            break
+        case .denied:
+            break
+        @unknown default:
+            break
+        }
         
         _ = txfTitle.rx.text.map({ $0 ?? ""}).bind(to: todoTitle)
         _ = txvContent.rx.text.map({ $0 ?? ""}).bind(to: content)
@@ -56,6 +71,7 @@ class TodoUpdateTableViewController: UITableViewController {
                             content: content.value,
                             startCoord: "\(startCoord.value)",
                             endCoords: ["1", "2", "3"])
+            print("To Update Todo:", todo)
             
             FirestoreTodo.shared.addPost(todoRequest: todo) { documenID in
                 SimpleAlert.present(message: "Success", title: "Add Todo") { _ in
@@ -82,6 +98,22 @@ extension TodoUpdateTableViewController: MKMapViewDelegate {
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
         print(#function)
+        let zoomWidth = mapView.visibleMapRect.size.width
+        let zoomFactor = Int(log2(zoomWidth)) - 9
+        print("...REGION DID CHANGE: ZOOM FACTOR \(zoomFactor)")
         startCoord.accept(mapView.centerCoordinate)
+    }
+}
+
+extension TodoUpdateTableViewController: CLLocationManagerDelegate {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate,
+              lastLocation.latitude != locValue.latitude || lastLocation.longitude != locValue.longitude
+        else {
+            return
+        }
+        
+        centerAnnotation.coordinate = locValue
+        mapViewStart.centerCoordinate = locValue
     }
 }

@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MainViewController.swift
 //  GPS-Todo
 //
 //  Created by yoonbumtae on 2022/10/11.
@@ -9,14 +9,16 @@ import UIKit
 import FirebaseEmailAuthUI
 import FirebaseGoogleAuthUI
 import FirebaseOAuthUI
+import CoreLocation
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     @IBOutlet weak var btnLogInOut: UIButton!
     @IBOutlet weak var lblUserStatus: UILabel!
     
     // Instance Variables
     var handle: AuthStateDidChangeListenerHandle!
+    private let locationManager = GPSLocationManager()
     
     // Unhashed nonce (Apple Login).
     fileprivate var currentNonce: String?
@@ -24,6 +26,18 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        switch locationManager.authStatus {
+        case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
+            print("Allowed")
+        case .restricted:
+            break
+        case .denied:
+            break
+        @unknown default:
+            break
+        }
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -93,7 +107,7 @@ class ViewController: UIViewController {
     }
 }
 
-extension ViewController: FUIAuthDelegate {
+extension MainViewController: FUIAuthDelegate {
     func authUI(_ authUI: FUIAuth, didSignInWith authDataResult: AuthDataResult?, error: Error?) {
         if let error = error {
             print(error)
@@ -127,7 +141,7 @@ extension ViewController: FUIAuthDelegate {
 
 }
 
-extension ViewController: UIAdaptivePresentationControllerDelegate {
+extension MainViewController: UIAdaptivePresentationControllerDelegate {
     
     func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
         false

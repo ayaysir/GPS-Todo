@@ -21,12 +21,12 @@ class TodoListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        let todo = Todo(title: "Title \(Int.random(in: 111...999))",
-                        content: "content",
-                        startCoord: "",
-                        endCoords: ["1", "2", "3"])
-        
-        FirestoreTodo.shared.addPost(todoRequest: todo)
+        // let todo = Todo(title: "Title \(Int.random(in: 111...999))",
+        //                 content: "content",
+        //                 startCoord: "",
+        //                 endCoords: ["1", "2", "3"])
+        //
+        // FirestoreTodo.shared.addPost(todoRequest: todo)
         
         FirestoreTodo.shared.listenAll { todos in
             self.list = todos
