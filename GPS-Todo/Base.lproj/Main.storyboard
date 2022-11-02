@@ -37,6 +37,20 @@
                                     <action selector="btnActLogInout:" destination="BYZ-38-t0r" eventType="touchUpInside" id="TPH-Uf-czy"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l9y-Ga-7q3">
+                                <rect key="frame" x="62" y="672" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" maximumValue="100" translatesAutoresizingMaskIntoConstraints="NO" id="a6W-RI-fmk">
+                                <rect key="frame" x="112" y="666" width="94" height="32"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="stepperActCount:" destination="BYZ-38-t0r" eventType="valueChanged" id="6Bh-zD-3ld"/>
+                                </connections>
+                            </stepper>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -44,12 +58,14 @@
                     <tabBarItem key="tabBarItem" title="Item" id="EyX-80-x4u"/>
                     <connections>
                         <outlet property="btnLogInOut" destination="rIO-OR-WS1" id="FvR-vo-TBi"/>
+                        <outlet property="lblCount" destination="l9y-Ga-7q3" id="7wE-xS-Vl1"/>
                         <outlet property="lblUserStatus" destination="LRJ-ZU-RZ7" id="Aa5-1k-OxI"/>
+                        <outlet property="stepperCount" destination="a6W-RI-fmk" id="PsU-41-eH7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1233" y="-212"/>
+            <point key="canvasLocation" x="1231.8840579710145" y="-212.27678571428569"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="7Qa-4w-ixb">
@@ -182,17 +198,13 @@
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZCM-XY-DcM">
-                                                    <rect key="frame" x="20" y="15" width="204" height="21"/>
+                                                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="J1Y-Ti-8VU">
+                                                    <rect key="frame" x="278" y="16" width="87" height="22"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <stepper opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="1" minimumValue="1" maximumValue="5" translatesAutoresizingMaskIntoConstraints="NO" id="MOc-n2-8mX">
-                                                    <rect key="frame" x="260" y="9" width="94" height="32"/>
-                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                </stepper>
+                                                    <color key="tintColor" red="1" green="0.1764705882" blue="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
+                                                    <state key="normal" title="Remove" image="delete.left.fill" catalog="system"/>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" systemColor="systemOrangeColor"/>
                                         </tableViewCellContentView>
@@ -212,94 +224,53 @@
                                             <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" textLabel="cFo-yl-nEA" rowHeight="50" style="IBUITableViewCellStyleDefault" id="0V0-HZ-xKV" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" rowHeight="50" id="0V0-HZ-xKV" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="937.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="0V0-HZ-xKV" id="BnH-Kf-0h7">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cFo-yl-nEA">
-                                                    <rect key="frame" x="20" y="0.0" width="334" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Pp-bs-smd">
+                                                    <rect key="frame" x="53" y="14" width="301" height="21"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" textLabel="Nud-9q-u3x" rowHeight="50" style="IBUITableViewCellStyleDefault" id="yiU-A5-zIL" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" rowHeight="50" id="yiU-A5-zIL" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="987.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="yiU-A5-zIL" id="xxV-wh-ec6">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Nud-9q-u3x">
-                                                    <rect key="frame" x="20" y="0.0" width="334" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" textLabel="EbN-Ex-JNP" rowHeight="50" style="IBUITableViewCellStyleDefault" id="vqh-Yg-bRK" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" rowHeight="50" id="vqh-Yg-bRK" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="1037.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vqh-Yg-bRK" id="2cn-Mh-hG5">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="EbN-Ex-JNP">
-                                                    <rect key="frame" x="20" y="0.0" width="334" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" textLabel="ZTq-tV-Y9F" rowHeight="50" style="IBUITableViewCellStyleDefault" id="8Cp-fi-dCd" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" rowHeight="50" id="8Cp-fi-dCd" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="1087.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="8Cp-fi-dCd" id="7iq-S6-MKM">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ZTq-tV-Y9F">
-                                                    <rect key="frame" x="20" y="0.0" width="334" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" textLabel="anh-6l-qiW" rowHeight="50" style="IBUITableViewCellStyleDefault" id="kdA-TS-qiR" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="TodoUpdate_EndLocCoord" rowHeight="50" id="kdA-TS-qiR" customClass="EndLocationCell" customModule="GPS_Todo" customModuleProvider="target">
                                         <rect key="frame" x="20" y="1137.5" width="374" height="50"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="kdA-TS-qiR" id="r5N-84-her">
                                             <rect key="frame" x="0.0" y="0.0" width="374" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="anh-6l-qiW">
-                                                    <rect key="frame" x="20" y="0.0" width="334" height="50"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <color key="backgroundColor" systemColor="systemPinkColor"/>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </cells>
@@ -316,17 +287,16 @@
                     <size key="freeformSize" width="414" height="1600"/>
                     <connections>
                         <outlet property="barBtnSubmit" destination="cTC-Z6-yiW" id="hM9-zj-jfi"/>
-                        <outlet property="lblEndLocationCount" destination="ZCM-XY-DcM" id="UQu-R0-mue"/>
+                        <outlet property="btnRemoveAnnotation" destination="J1Y-Ti-8VU" id="cEB-95-d0X"/>
                         <outlet property="mapViewEnd" destination="NUG-2e-gIR" id="1Vj-3l-fpW"/>
                         <outlet property="mapViewStart" destination="iMO-hI-rYe" id="OES-Dx-O35"/>
-                        <outlet property="stepperEndLocationCount" destination="MOc-n2-8mX" id="In3-VD-tY3"/>
                         <outlet property="txfTitle" destination="6j1-0P-DLx" id="xUq-de-l5a"/>
                         <outlet property="txvContent" destination="qch-jF-pHo" id="zmF-YM-wS5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Wwr-XF-Hm1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2946" y="-347"/>
+            <point key="canvasLocation" x="2944.9275362318845" y="-347.54464285714283"/>
         </scene>
         <!--Todo Detail Table View Controller-->
         <scene sceneID="d7z-Bq-NgD">
@@ -445,6 +415,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="delete.left.fill" catalog="system" width="128" height="104"/>
         <image name="square.and.arrow.up.on.square.fill" catalog="system" width="117" height="128"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

@@ -46,6 +46,9 @@
 		44B1006F28F48818005B97EE /* AssistantWatchForGPSTODO.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 44B1005128F48815005B97EE /* AssistantWatchForGPSTODO.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		44B1007928F48A99005B97EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 44B1007828F48A99005B97EE /* GoogleService-Info.plist */; };
 		44B1007C28F48D62005B97EE /* AdMob.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B1007B28F48D62005B97EE /* AdMob.swift */; };
+		44FA53BA2912D0F900133A3E /* EndLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53B82912D0F900133A3E /* EndLocationTableViewCell.swift */; };
+		44FA53BB2912D0F900133A3E /* EndLocationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 44FA53B92912D0F900133A3E /* EndLocationTableViewCell.xib */; };
+		44FA53BE2912D8AD00133A3E /* BehaviorRelay+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53BD2912D8AD00133A3E /* BehaviorRelay+.swift */; };
 		816DA937E2BD09D56FA9EE31 /* Pods_GPS_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63EDE213F0A8703D6C3EEBB /* Pods_GPS_TodoTests.framework */; };
 		C5CBFCFEF351F5EAEDDE666E /* Pods_AssistantWatchForGPSTODO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4B293F0391A6747641E212 /* Pods_AssistantWatchForGPSTODO.framework */; };
 		CAF728119A73F34730E2D763 /* Pods_GPS_Todo_GPS_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02B269BDCD0FCEAA41D3EF /* Pods_GPS_Todo_GPS_TodoUITests.framework */; };
@@ -156,6 +159,9 @@
 		44B1006C28F48818005B97EE /* PushNotificationPayload.apns */ = {isa = PBXFileReference; lastKnownFileType = text; path = PushNotificationPayload.apns; sourceTree = "<group>"; };
 		44B1007828F48A99005B97EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		44B1007B28F48D62005B97EE /* AdMob.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdMob.swift; sourceTree = "<group>"; };
+		44FA53B82912D0F900133A3E /* EndLocationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndLocationTableViewCell.swift; sourceTree = "<group>"; };
+		44FA53B92912D0F900133A3E /* EndLocationTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EndLocationTableViewCell.xib; sourceTree = "<group>"; };
+		44FA53BD2912D8AD00133A3E /* BehaviorRelay+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BehaviorRelay+.swift"; sourceTree = "<group>"; };
 		499114AF779D1C29EDF1C74E /* Pods-GPS-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo.release.xcconfig"; path = "Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPS_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5160995558F6F0D7692A99F0 /* Pods-AssistantWatchForGPSTODO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO.debug.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO/Pods-AssistantWatchForGPSTODO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +325,7 @@
 		4437F1EA29102A2D0034624B /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				44FA53BC2912D89C00133A3E /* RxSwift */,
 				4437F1EB29102A380034624B /* MKMapView+.swift */,
 			);
 			path = Extension;
@@ -353,6 +360,7 @@
 		44B1001B28F487BB005B97EE /* GPS-Todo */ = {
 			isa = PBXGroup;
 			children = (
+				44FA53B42912D0AF00133A3E /* View */,
 				4437F1EA29102A2D0034624B /* Extension */,
 				4437F1E7291023380034624B /* Wrapper */,
 				4437F1DC290C4D860034624B /* ValueObject */,
@@ -419,6 +427,31 @@
 				44B1007B28F48D62005B97EE /* AdMob.swift */,
 			);
 			path = AdMob;
+			sourceTree = "<group>";
+		};
+		44FA53B42912D0AF00133A3E /* View */ = {
+			isa = PBXGroup;
+			children = (
+				44FA53B52912D0B500133A3E /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		44FA53B52912D0B500133A3E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				44FA53B82912D0F900133A3E /* EndLocationTableViewCell.swift */,
+				44FA53B92912D0F900133A3E /* EndLocationTableViewCell.xib */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		44FA53BC2912D89C00133A3E /* RxSwift */ = {
+			isa = PBXGroup;
+			children = (
+				44FA53BD2912D8AD00133A3E /* BehaviorRelay+.swift */,
+			);
+			path = RxSwift;
 			sourceTree = "<group>";
 		};
 		83B668C12008FB5F086EC33B /* Frameworks */ = {
@@ -614,6 +647,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FA53BB2912D0F900133A3E /* EndLocationTableViewCell.xib in Resources */,
 				44B1002C28F487BD005B97EE /* LaunchScreen.storyboard in Resources */,
 				44B1007928F48A99005B97EE /* GoogleService-Info.plist in Resources */,
 				44298BBF2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup in Resources */,
@@ -828,6 +862,7 @@
 			files = (
 				44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */,
 				4437F1E1290C50A00034624B /* TodoListTableViewController.swift in Sources */,
+				44FA53BA2912D0F900133A3E /* EndLocationTableViewCell.swift in Sources */,
 				4437F1E9291023810034624B /* GPSLocationManager.swift in Sources */,
 				44B1002128F487BB005B97EE /* MainViewController.swift in Sources */,
 				44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */,
@@ -836,6 +871,7 @@
 				4437F1AF29059A2C0034624B /* EmailEntryViewController.swift in Sources */,
 				44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */,
 				44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */,
+				44FA53BE2912D8AD00133A3E /* BehaviorRelay+.swift in Sources */,
 				4437F1E3290C5B150034624B /* TodoDetailTableViewController.swift in Sources */,
 				44298BBD290072A800C3D4DA /* FUIAdvancedPasswordSignUpViewController.m_backup in Sources */,
 				44298BB628FF19F000C3D4DA /* RandomNonceString.swift in Sources */,
