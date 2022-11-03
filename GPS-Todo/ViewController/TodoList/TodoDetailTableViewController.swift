@@ -7,22 +7,89 @@
 
 import UIKit
 import MapKit
+import RxSwift
 
 class TodoDetailTableViewController: UITableViewController {
+    
+    private let SECTION_END_LOCATION = 4
 
-    private let locationManager = CLLocationManager()
+    private let locationManager = GPSLocationManager()
+    private let disposeBag = DisposeBag()
     
     @IBOutlet weak var mainMap: MKMapView!
+    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var txvContent: UITextView!
+    @IBOutlet weak var lblStartCoord: UILabel!
+    @IBOutlet weak var segEndLocation: UISegmentedControl!
+    
+    var todo: Todo!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        let nib = UINib(nibName: "EndLocationTableViewCell", bundle: nil)
+        tableView.register(nib, forCellReuseIdentifier: "EndLocation_XIB")
+        
+        // RxSwift
+        _ = segEndLocation.rx.selectedSegmentIndex.subscribe(onNext: { [unowned self] index in
+            let centerCoord = todo.endCoords[index].toCLCoordinate()
+            mainMap.setCenter(centerCoord, animated: true)
+        }).disposed(by: disposeBag)
+        
+        // 임시: 내용 표시
+        lblTitle.text = todo.title
+        txvContent.text = todo.content
+        lblStartCoord.text = "\(todo.startCoord)"
+        
+        tableView.reloadData()
         // "물왕저수지 정통밥집" 선택 - 핀을 설치하고 위치 정보 표시
-        setAnnotation(latitudeValue: 37.3826616, longitudeValue: 126.840719, delta: 0.1, title: "물왕저수지 정통밥집", subtitle: "경기 시흥시 동서로857번길 6")
+        todo.endCoords.forEach { [unowned self] info in
+            setAnnotation(latitudeValue: info.latitude,
+                          longitudeValue: info.longitude,
+                          delta: 0.5,
+                          title: info.title ?? "물왕저수지 정통밥집",
+                          subtitle: info.subtitle ?? "경기 시흥시 동서로857번길 6"
+            )
+        }
+        
+        let endCoordsCount = todo.endCoords.count
+        if endCoordsCount > 1 {
+            let segStrings = todo.endCoords.enumerated().map { (index, coord) in
+                coord.title ?? "Place \(index + 1)"
+            }
+            segEndLocation.replaceSegments(segments: segStrings)
+            segEndLocation.selectedSegmentIndex = 0
+            segEndLocation.isHidden = false
+        } else {
+            segEndLocation.isHidden = true
+        }
     }
+    
     
     // MARK: - Table view data source
 
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        if indexPath.section == SECTION_END_LOCATION && indexPath.row > 0 {
+            guard let cell =  tableView.dequeueReusableCell(withIdentifier: "EndLocation_XIB", for: indexPath) as? EndLocationTableViewCell else {
+                return super.tableView(tableView, cellForRowAt: indexPath)
+            }
+            
+            cell.selectionStyle = .none
+            cell.configure(annotation: mainMap.annotations[indexPath.row - 1])
+            return cell
+        }
+        
+        return super.tableView(tableView, cellForRowAt: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if section == SECTION_END_LOCATION {
+            return 1 + todo.endCoords.count
+        }
+        
+        return super.tableView(tableView, numberOfRowsInSection: section)
+    }
 
 }
 

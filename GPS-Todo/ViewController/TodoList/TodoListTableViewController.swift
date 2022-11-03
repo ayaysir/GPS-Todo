@@ -21,13 +21,6 @@ class TodoListTableViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
         
-        // let todo = Todo(title: "Title \(Int.random(in: 111...999))",
-        //                 content: "content",
-        //                 startCoord: "",
-        //                 endCoords: ["1", "2", "3"])
-        //
-        // FirestoreTodo.shared.addPost(todoRequest: todo)
-        
         FirestoreTodo.shared.listenAll { todos in
             self.list = todos
             self.tableView.reloadData()
@@ -63,7 +56,7 @@ class TodoListTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "Todo_Detail_Segue", sender: nil)
+        performSegue(withIdentifier: "Todo_Detail_Segue", sender: indexPath)
     }
 
     /*
@@ -105,15 +98,23 @@ class TodoListTableViewController: UITableViewController {
     }
     */
 
-    /*
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        switch segue.identifier {
+        case "Todo_Create_Segue":
+            break
+        case "Todo_Detail_Segue":
+            guard let indexPath = sender as? IndexPath,
+                  let detailVC = segue.destination as? TodoDetailTableViewController else {
+                return
+            }
+            detailVC.todo = list[indexPath.row]
+        default:
+            break
+        }
     }
-    */
 
 }
 

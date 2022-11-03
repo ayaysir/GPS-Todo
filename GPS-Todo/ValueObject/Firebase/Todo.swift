@@ -28,8 +28,8 @@ struct Todo: Codable {
     var authorUID: String = ""
     
     // 좌표
-    var startCoord: String
-    var endCoords: [String]
+    var startCoord: CoordInfo
+    var endCoords: [CoordInfo]
     
     enum CodingKeys: String, CodingKey {
         case documentID = "document_id"

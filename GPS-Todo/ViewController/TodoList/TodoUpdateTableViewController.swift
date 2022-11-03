@@ -88,10 +88,10 @@ class TodoUpdateTableViewController: UITableViewController {
         
         // Submit to Firebase - barBtn Clicked
         _ = barBtnSubmit.rx.tap.subscribe(onNext: { [unowned self] in
-            let endCoords = mapViewEnd.annotations.map { "\($0.coordinate)" }
+            let endCoords = mapViewEnd.annotations.map { CoordInfo(fromAnnotation: $0) }
             let todo = Todo(title: viewModel.todoTitle.value,
                             content: viewModel.content.value,
-                            startCoord: "\(viewModel.startCoord.value)",
+                            startCoord: CoordInfo(fromCoord: viewModel.startCoord.value),
                             endCoords: endCoords)
             print("To Update Todo:", todo)
             
