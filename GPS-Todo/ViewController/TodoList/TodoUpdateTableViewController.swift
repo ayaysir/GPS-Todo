@@ -13,7 +13,11 @@ import BGSMM_DevKit
 
 class TodoUpdateTableViewController: UITableViewController {
     
+    // MARK: - Constants
+    
     private let SECTION_END_COORDS = 3
+    
+    // MARK: - @IBOutlet
     
     @IBOutlet weak var txfTitle: UITextField!
     @IBOutlet weak var txvContent: UITextView!
@@ -22,8 +26,12 @@ class TodoUpdateTableViewController: UITableViewController {
     @IBOutlet weak var mapViewEnd: MKMapView!
     @IBOutlet weak var btnRemoveAnnotation: UIButton!
     
+    // MARK: - Member variables
+    
+    private let viewModel = TodoUpdateViewModel()
+    private let disposeBag = DisposeBag()
+    
     private let locationManager = GPSLocationManager()
-    private var lastLocation: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 0, longitude: 0)
     private let centerAnnotation = MKPointAnnotation()
     
     private var sortedAnnotations: [MKAnnotation] {
@@ -38,48 +46,7 @@ class TodoUpdateTableViewController: UITableViewController {
     }
     private var placeCount: Int = 1
     
-    // ====== View Model ========= //
-    var todoTitle = BehaviorRelay<String>(value: "")
-    var content = BehaviorRelay<String>(value: "")
-    
-    var startCoord = BehaviorRelay<CLLocationCoordinate2D>(value: CLLocationCoordinate2D())
-    var endAnnotations = BehaviorRelay<[MKAnnotation]>(value: [])
-    
-    var isValid: Observable<Bool> {
-        return Observable.combineLatest(todoTitle.asObservable(),
-                                        content.asObservable(),
-                                        startCoord.asObservable()) { title, content, startCoord in
-            
-            return title.count >= 1 && content.count >= 1
-        }
-    }
-    
-    @objc func longPressMapEndLocation(gestureRecognizer: UILongPressGestureRecognizer) {
-        if gestureRecognizer.state == .began {
-            guard mapViewEnd.annotations.count < 5 else {
-                SimpleAlert.presentCaution(message: "5개까지만 추가가능")
-                return
-            }
-            
-            let location = gestureRecognizer.location(in: mapViewEnd)
-            let coordinate = mapViewEnd.convert(location, toCoordinateFrom: mapViewEnd)
-            
-            // Add annotation:
-            let annotation = MKPointAnnotation()
-            annotation.coordinate = coordinate
-            annotation.title = "Place \(placeCount)"
-            placeCount += 1
-            mapViewEnd.addAnnotation(annotation)
-            
-            // https://developer.apple.com/forums/thread/126473
-            self.mapViewEnd.setCenter(coordinate, animated: true)
-        }
-    }
-    
-    @objc func longPressAnnotation(_ gestureRecognizer: UILongPressGestureRecognizer) {
-        let selected = mapViewEnd.selectedAnnotations
-        mapViewEnd.removeAnnotations(selected)
-    }
+    //MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -110,30 +77,21 @@ class TodoUpdateTableViewController: UITableViewController {
             break
         }
         
+        // ======= RxSwift =======
         
+        _ = txfTitle.rx.text.map({ $0 ?? ""}).bind(to: viewModel.todoTitle)
+        _ = txvContent.rx.text.map({ $0 ?? ""}).bind(to: viewModel.content)
         
-        _ = Observable
-            .of(mapViewEnd.annotations)
-            .map({ $0 })
-            .subscribe(onNext: { annots in
-            print("Annots:", annots)
-        })
-        
-        _ = txfTitle.rx.text.map({ $0 ?? ""}).bind(to: todoTitle)
-        _ = txvContent.rx.text.map({ $0 ?? ""}).bind(to: content)
-        
-        _ = isValid.subscribe(onNext: { [unowned self] isValid in
+        _ = viewModel.isValid.subscribe(onNext: { [unowned self] isValid in
             barBtnSubmit.isEnabled = isValid
-        })
+        }).disposed(by: disposeBag)
         
         // Submit to Firebase - barBtn Clicked
         _ = barBtnSubmit.rx.tap.subscribe(onNext: { [unowned self] in
-            print(todoTitle.value, content.value, startCoord.value)
-            
             let endCoords = mapViewEnd.annotations.map { "\($0.coordinate)" }
-            let todo = Todo(title: todoTitle.value,
-                            content: content.value,
-                            startCoord: "\(startCoord.value)",
+            let todo = Todo(title: viewModel.todoTitle.value,
+                            content: viewModel.content.value,
+                            startCoord: "\(viewModel.startCoord.value)",
                             endCoords: endCoords)
             print("To Update Todo:", todo)
             
@@ -142,7 +100,7 @@ class TodoUpdateTableViewController: UITableViewController {
                     self.navigationController?.popViewController(animated: true)
                 }
             }
-        })
+        }).disposed(by: disposeBag)
         
         // btnRemoveAnnotation
         _ = btnRemoveAnnotation.rx.tap.subscribe(onNext: { [unowned self] in
@@ -150,17 +108,37 @@ class TodoUpdateTableViewController: UITableViewController {
                 mapViewEnd.removeAnnotations(mapViewEnd.selectedAnnotations)
                 tableView.reloadData()
             }
-        })
+        }).disposed(by: disposeBag)
+    }
+    
+    // MARK: - @objc methods
+    
+    @objc func longPressMapEndLocation(gestureRecognizer: UILongPressGestureRecognizer) {
+        if gestureRecognizer.state == .began {
+            guard mapViewEnd.annotations.count < 5 else {
+                SimpleAlert.presentCaution(message: "5개까지만 추가가능")
+                return
+            }
+            
+            let location = gestureRecognizer.location(in: mapViewEnd)
+            let coordinate = mapViewEnd.convert(location, toCoordinateFrom: mapViewEnd)
+            
+            // Add annotation:
+            let annotation = MKPointAnnotation()
+            annotation.coordinate = coordinate
+            annotation.title = "Place \(placeCount)"
+            placeCount += 1
+            mapViewEnd.addAnnotation(annotation)
+            
+            // https://developer.apple.com/forums/thread/126473
+            self.mapViewEnd.setCenter(coordinate, animated: true)
+        }
     }
 }
 
 extension TodoUpdateTableViewController {
     
     // MARK: - Table view data source
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
-    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if section == SECTION_END_COORDS {
@@ -172,13 +150,6 @@ extension TodoUpdateTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_END_COORDS && indexPath.row >= 2 {
-            // let coordText = "\(mapViewEnd.annotations[indexPath.row - 2].coordinate)"
-            // let cell = super.tableView(tableView, cellForRowAt: indexPath)
-            // if let label = cell.contentView.subviews[0] as? UILabel {
-            //     label.text = coordText
-            // }
-            
-            // return EndLocationCell(frame: cell.frame)
             
             guard let cell = tableView.dequeueReusableCell(withIdentifier: "EndLocation_XIB", for: indexPath) as? EndLocationTableViewCell else {
                 return UITableViewCell()
@@ -186,8 +157,6 @@ extension TodoUpdateTableViewController {
             
             cell.selectionStyle = .none
             
-            // TODO: 좌표 소수점 표시 > extension으로 빼기
-            // let annotation = mapViewEnd.annotations[indexPath.row - 2]
             let annotation = sortedAnnotations[indexPath.row - 2]
             cell.configure(annotation: annotation)
             cell.delegate = self
@@ -212,12 +181,11 @@ extension TodoUpdateTableViewController: MKMapViewDelegate {
     }
     
     func mapView(_ mapView: MKMapView, regionWillChangeAnimated animated: Bool) {
-        
         switch mapView {
         case mapViewStart:
             let zoomWidth = mapView.visibleMapRect.size.width
-            let zoomFactor = Int(log2(zoomWidth)) - 9
-            startCoord.accept(mapView.centerCoordinate)
+            let _ = Int(log2(zoomWidth)) - 9
+            viewModel.startCoord.accept(mapView.centerCoordinate)
         case mapViewEnd:
             break
         default:
@@ -248,9 +216,11 @@ extension TodoUpdateTableViewController: MKMapViewDelegate {
 }
 
 extension TodoUpdateTableViewController: CLLocationManagerDelegate {
+    
+    // MARK: - CLLocationManagerDelegate
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate,
-              lastLocation.latitude != locValue.latitude || lastLocation.longitude != locValue.longitude
+        guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate
         else {
             return
         }
@@ -261,6 +231,9 @@ extension TodoUpdateTableViewController: CLLocationManagerDelegate {
 }
 
 extension TodoUpdateTableViewController: EndLocationTVCellDelegate {
+    
+    // MARK: - EndLocationTableViewCell
+    
     func didDeleteButtonClicked(_ cell: EndLocationTableViewCell) {
         guard let annotation = cell.annotation else {
             return
