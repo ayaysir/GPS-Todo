@@ -135,5 +135,27 @@ class FirestoreTodo {
             print("Firestore>> Document deleted with ID: \(documentID)")
         }
     }
+    
+    func updateTodo(documentID: String, originalTodoRequest request: Todo, onCompletion: @escaping (_ documentId: String) -> ()) {
+        
+        do {
+            // serverTS에는 값이 들어있으므로 업데이트시 시간이 바뀌지 않는다.
+            // serverTS를 nil로 하면 새로운 시간이 부여된다.
+            var request = request
+            request.modifiedTimestamp = nil
+            
+            try todoRef.document(documentID).setData(from: request) { err in
+                if let err = err {
+                    print("Firestore>> Error updating document: \(err)")
+                    return
+                }
+                
+                print("Firestore>> Document updating with ID: \(documentID)")
+                onCompletion(documentID)
+            }
+        } catch {
+            print("Firestore>> Error from updatePost-setData: ", error)
+        }
+    }
 
 }

@@ -23,7 +23,7 @@
                         <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                         <state key="normal" image="xmark.circle.fill" catalog="system"/>
                         <connections>
-                            <action selector="btnActDelete:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="bNc-vk-vcO"/>
+                            <action selector="btnIconDoAct:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="O6F-eK-FR7"/>
                         </connections>
                     </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QMU-r7-mrh">
@@ -37,7 +37,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
-                <outlet property="btnDelete" destination="sUi-4C-wF4" id="8wF-Rl-t4o"/>
+                <outlet property="btnIcon" destination="sUi-4C-wF4" id="8wF-Rl-t4o"/>
                 <outlet property="lblCoordinate" destination="QMU-r7-mrh" id="LZE-X3-kBj"/>
             </connections>
             <point key="canvasLocation" x="131.8840579710145" y="101.78571428571428"/>

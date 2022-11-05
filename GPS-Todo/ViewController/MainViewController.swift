@@ -46,6 +46,9 @@ class MainViewController: UIViewController {
             print("label updated by RxSwift")
             lblCount.text = "\(value)"
         })
+        
+        let array = ["0", "a"]
+        print(array[safe: 5] ?? "safe")
     }
     
     override func viewWillAppear(_ animated: Bool) {

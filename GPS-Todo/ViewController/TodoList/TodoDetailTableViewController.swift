@@ -8,6 +8,8 @@
 import UIKit
 import MapKit
 import RxSwift
+import RxCocoa
+import BGSMM_DevKit
 
 class TodoDetailTableViewController: UITableViewController {
     
@@ -17,12 +19,17 @@ class TodoDetailTableViewController: UITableViewController {
     private let disposeBag = DisposeBag()
     
     @IBOutlet weak var mainMap: MKMapView!
-    @IBOutlet weak var lblTitle: UILabel!
+    @IBOutlet weak var txfTitle: UITextField!
     @IBOutlet weak var txvContent: UITextView!
     @IBOutlet weak var lblStartCoord: UILabel!
     @IBOutlet weak var segEndLocation: UISegmentedControl!
+    @IBOutlet weak var barBtnUpdate: UIBarButtonItem!
+    
+    private var overlayOnTxfTitle: UIView!
     
     var todo: Todo!
+    
+    // === VIEW MODEL == //
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,14 +37,63 @@ class TodoDetailTableViewController: UITableViewController {
         let nib = UINib(nibName: "EndLocationTableViewCell", bundle: nil)
         tableView.register(nib, forCellReuseIdentifier: "EndLocation_XIB")
         
+        let outsideTapGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
+        tableView.addGestureRecognizer(outsideTapGesture)
+        
         // RxSwift
         _ = segEndLocation.rx.selectedSegmentIndex.subscribe(onNext: { [unowned self] index in
             let centerCoord = todo.endCoords[index].toCLCoordinate()
             mainMap.setCenter(centerCoord, animated: true)
         }).disposed(by: disposeBag)
         
+        _ = barBtnUpdate.rx.tap.subscribe { _ in
+        }.disposed(by: disposeBag)
+        
+        let doubleTapGestureOnTextView = UITapGestureRecognizer(target: self, action: #selector(doubleTapFields))
+        doubleTapGestureOnTextView.numberOfTapsRequired = 2
+        
+        let doubleTapGestureOnTextField = UITapGestureRecognizer(target: self, action: #selector(doubleTapFields))
+        doubleTapGestureOnTextField.numberOfTapsRequired = 2
+        
+        txvContent.addGestureRecognizer(doubleTapGestureOnTextView)
+        
+        // DidEndEditing - Text View
+        _ = txvContent.rx.didEndEditing.subscribe { [unowned self] _ in
+            txvContent.isEditable = false
+            
+            // update to firestore
+            guard let documentID = todo.documentID else {
+                return
+            }
+            todo.content = txvContent.text
+            FirestoreTodo.shared.updateTodo(documentID: documentID, originalTodoRequest: todo) { documentId in
+                
+            }
+        }.disposed(by: disposeBag)
+        
+        overlayOnTxfTitle = UIView(frame: self.txfTitle.frame)
+        overlayOnTxfTitle.backgroundColor = UIColor(red: 1, green: 0, blue: 0, alpha: 0)
+        txfTitle.superview?.addSubview(overlayOnTxfTitle)
+        overlayOnTxfTitle.addGestureRecognizer(doubleTapGestureOnTextField)
+        
+        // DidEndEditing - Text Field
+        _ = txfTitle.rx.controlEvent([.editingDidEnd]).asObservable().subscribe { [unowned self]  _ in
+            txfTitle.isEnabled = false
+            overlayOnTxfTitle.isHidden = false
+            
+            // update to firestore
+            guard let documentID = todo.documentID,
+                  let titleText = txfTitle.text else {
+                return
+            }
+            todo.title = titleText
+            FirestoreTodo.shared.updateTodo(documentID: documentID, originalTodoRequest: todo) { documentId in
+                
+            }
+        }.disposed(by: disposeBag)
+        
         // 임시: 내용 표시
-        lblTitle.text = todo.title
+        txfTitle.text = todo.title
         txvContent.text = todo.content
         lblStartCoord.text = "\(todo.startCoord)"
         
@@ -53,7 +109,7 @@ class TodoDetailTableViewController: UITableViewController {
         }
         
         let endCoordsCount = todo.endCoords.count
-        if endCoordsCount > 1 {
+        if endCoordsCount >= 1 {
             let segStrings = todo.endCoords.enumerated().map { (index, coord) in
                 coord.title ?? "Place \(index + 1)"
             }
@@ -65,16 +121,49 @@ class TodoDetailTableViewController: UITableViewController {
         }
     }
     
+    @objc func endEditing() {
+    }
+    
+    @objc func doubleTapFields(_ gesture: UITapGestureRecognizer) {
+        guard let view = gesture.view else {
+            return
+        }
+        
+        switch view {
+        case overlayOnTxfTitle:
+            print("txfTitle")
+            if !txfTitle.isEnabled {
+                overlayOnTxfTitle.isHidden = true
+                txfTitle.isEnabled = true
+                txfTitle.becomeFirstResponder()
+            } else {
+                return
+            }
+        case txvContent:
+            if !txvContent.isEditable {
+                txvContent.isEditable = true
+                txvContent.becomeFirstResponder()
+            } else {
+                return
+            }
+        default:
+            break
+        }
+        
+    }
+    
+    
     
     // MARK: - Table view data source
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == SECTION_END_LOCATION && indexPath.row > 0 {
-            guard let cell =  tableView.dequeueReusableCell(withIdentifier: "EndLocation_XIB", for: indexPath) as? EndLocationTableViewCell else {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: "EndLocation_XIB", for: indexPath) as? EndLocationTableViewCell else {
                 return super.tableView(tableView, cellForRowAt: indexPath)
             }
             
             cell.selectionStyle = .none
+            cell.buttonMode = .placeIcon
             cell.configure(annotation: mainMap.annotations[indexPath.row - 1])
             return cell
         }
@@ -83,12 +172,18 @@ class TodoDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         if section == SECTION_END_LOCATION {
             return 1 + todo.endCoords.count
         }
         
         return super.tableView(tableView, numberOfRowsInSection: section)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == SECTION_END_LOCATION && indexPath.row > 0 {
+            let coordinate = mainMap.annotations[indexPath.row - 1].coordinate
+            mainMap.setCenter(coordinate, animated: true)
+        }
     }
 
 }
@@ -143,4 +238,8 @@ extension TodoDetailTableViewController: CLLocationManagerDelegate {
          })
          locationManager.stopUpdatingLocation()
      }
+}
+
+extension TodoDetailTableViewController: UIGestureRecognizerDelegate {
+
 }

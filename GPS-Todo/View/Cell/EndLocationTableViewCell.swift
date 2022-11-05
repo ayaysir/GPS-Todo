@@ -14,10 +14,28 @@ protocol EndLocationTVCellDelegate: AnyObject {
 
 class EndLocationTableViewCell: UITableViewCell {
     
-    @IBOutlet weak var btnDelete: UIButton!
+    @IBOutlet weak var btnIcon: UIButton!
     @IBOutlet weak var lblCoordinate: UILabel!
     
     private(set) var annotation: MKAnnotation!
+    
+    enum ButtonMode {
+        case delete, placeIcon
+        
+        var image: UIImage {
+            switch self {
+            case .delete:
+                return UIImage(systemName: "xmark.circle.fill")!
+            case .placeIcon:
+                return UIImage(systemName: "photo.fill")!
+            }
+        }
+    }
+    var buttonMode: ButtonMode = .delete {
+        didSet {
+            self.btnIcon.setImage(buttonMode.image, for: .normal)
+        }
+    }
     
     weak var delegate: EndLocationTVCellDelegate?
     
@@ -49,9 +67,12 @@ class EndLocationTableViewCell: UITableViewCell {
         lblCoordinate.text = text
     }
     
-    @IBAction func btnActDelete(_ sender: Any) {
-        delegate?.didDeleteButtonClicked(self)
+    @IBAction func btnIconDoAct(_ sender: Any) {
+        switch buttonMode {
+        case .delete:
+            delegate?.didDeleteButtonClicked(self)
+        case .placeIcon:
+            break
+        }
     }
-    
-    
 }
