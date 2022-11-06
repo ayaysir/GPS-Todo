@@ -27,6 +27,8 @@ class TodoDetailTableViewController: UITableViewController {
     
     private var overlayOnTxfTitle: UIView!
     
+    private var currentLocationAnnotation: MKPointAnnotation!
+    
     var todo: Todo!
     
     // === VIEW MODEL == //
@@ -39,6 +41,22 @@ class TodoDetailTableViewController: UITableViewController {
         
         let outsideTapGesture = UITapGestureRecognizer(target: self, action: #selector(endEditing))
         tableView.addGestureRecognizer(outsideTapGesture)
+        
+        currentLocationAnnotation = MKPointAnnotation()
+        currentLocationAnnotation.title = "Current"
+        currentLocationAnnotation.subtitle = "Current Location ()"
+        mainMap.addAnnotation(currentLocationAnnotation)
+        
+        switch locationManager.authStatus {
+        case .notDetermined, .authorizedAlways, .authorizedWhenInUse:
+            locationManager.instantStartUpdatingLocation(delegateTo: self)
+        case .restricted:
+            break
+        case .denied:
+            break
+        @unknown default:
+            break
+        }
         
         // RxSwift
         _ = segEndLocation.rx.selectedSegmentIndex.subscribe(onNext: { [unowned self] index in
@@ -164,7 +182,9 @@ class TodoDetailTableViewController: UITableViewController {
             
             cell.selectionStyle = .none
             cell.buttonMode = .placeIcon
-            cell.configure(annotation: mainMap.annotations[indexPath.row - 1])
+            // cell.configure(annotation: mainMap.annotations[indexPath.row - 1])
+            cell.configure(info: todo.endCoords[indexPath.row - 1], indexPath: indexPath)
+            cell.delegate = self
             return cell
         }
         
@@ -180,6 +200,7 @@ class TodoDetailTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        print(#function, indexPath)
         if indexPath.section == SECTION_END_LOCATION && indexPath.row > 0 {
             let coordinate = mainMap.annotations[indexPath.row - 1].coordinate
             mainMap.setCenter(coordinate, animated: true)
@@ -203,9 +224,9 @@ extension TodoDetailTableViewController: CLLocationManagerDelegate {
      // 특정 위도와 경도에 핀 설치하고 핀에 타이틀과 서브 타이틀의 문자열 표시
      func setAnnotation(latitudeValue: CLLocationDegrees,
                         longitudeValue: CLLocationDegrees,
-                        delta span :Double,
+                        delta span: Double,
                         title strTitle: String,
-                        subtitle strSubTitle:String){
+                        subtitle strSubTitle: String){
          let annotation = MKPointAnnotation()
          annotation.coordinate = goLocation(latitudeValue: latitudeValue, longtudeValue: longitudeValue, delta: span)
          annotation.title = strTitle
@@ -215,31 +236,76 @@ extension TodoDetailTableViewController: CLLocationManagerDelegate {
      
      // 위치 정보에서 국가, 지역, 도로를 추출하여 레이블에 표시
      func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-         let pLocation = locations.last
-         _ = goLocation(latitudeValue: (pLocation?.coordinate.latitude)!,
-                    longtudeValue: (pLocation?.coordinate.longitude)!,
-                    delta: 0.01)
-         CLGeocoder().reverseGeocodeLocation(pLocation!, completionHandler: {(placemarks, error) -> Void in
-             let pm = placemarks!.first
-             let country = pm!.country
-             var address: String = ""
-             if country != nil {
-                 address = country!
-             }
-             if pm!.locality != nil {
-                 address += " "
-                 address += pm!.locality!
-             }
-             if pm!.thoroughfare != nil {
-                 address += " "
-                 address += pm!.thoroughfare!
-             }
-             print("address:", address)
-         })
-         locationManager.stopUpdatingLocation()
+         // let pLocation = locations.last
+         // _ = goLocation(latitudeValue: (pLocation?.coordinate.latitude)!,
+         //            longtudeValue: (pLocation?.coordinate.longitude)!,
+         //            delta: 0.01)
+         // CLGeocoder().reverseGeocodeLocation(pLocation!, completionHandler: {(placemarks, error) -> Void in
+         //     let pm = placemarks!.first
+         //     let country = pm!.country
+         //     var address: String = ""
+         //     if country != nil {
+         //         address = country!
+         //     }
+         //     if pm!.locality != nil {
+         //         address += " "
+         //         address += pm!.locality!
+         //     }
+         //     if pm!.thoroughfare != nil {
+         //         address += " "
+         //         address += pm!.thoroughfare!
+         //     }
+         //     print("address:", address)
+         // })
+         // locationManager.stopUpdatingLocation()
+         
+         // 현재 위치 업데이트
+         guard let currLocCoord: CLLocationCoordinate2D = manager.location?.coordinate
+         else {
+             return
+         }
+         // print(#function, currLocCoord)
+         currentLocationAnnotation.coordinate = currLocCoord
+         currentLocationAnnotation.subtitle = "At (\(currLocCoord.latitude), \(currLocCoord.longitude))"
+         // mainMap.setCenter(currLocCoord, animated: true)
+         
      }
+}
+
+extension TodoDetailTableViewController: MKMapViewDelegate {
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        // Check for type here, not for the Title!!!
+        if false {
+            let identifier = "Identifier for this annotation"
+            let annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView.image = UIImage(systemName: "chart.pie.fill")
+            annotationView.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
+            
+            annotationView.canShowCallout = false
+            return annotationView
+        }
+     
+        return nil
+    }
 }
 
 extension TodoDetailTableViewController: UIGestureRecognizerDelegate {
 
+}
+
+extension TodoDetailTableViewController: EndLocationTVCellDelegate {
+    func didIconButtonClicked(_ cell: EndLocationTableViewCell) {
+        
+    }
+    
+    func didEntireCellClicked(_ cell: EndLocationTableViewCell) {
+        guard let indexPath = cell.indexPath else {
+            return
+        }
+        
+        let row = indexPath.row - 1
+        
+        let target = todo.endCoords[row]
+        mainMap.setCenter(target.toCLCoordinate(), animated: true)
+    }
 }

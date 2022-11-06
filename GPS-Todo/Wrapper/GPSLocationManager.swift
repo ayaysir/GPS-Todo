@@ -32,8 +32,10 @@ class GPSLocationManager: CLLocationManager {
         }
     }
     
-    func instantStartUpdatingLocation(delegateTo controller: CLLocationManagerDelegate) {
-        self.delegate = controller
+    func instantStartUpdatingLocation(delegateTo controller: CLLocationManagerDelegate?) {
+        if let controller = controller {
+            self.delegate = controller
+        }
         self.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
         self.startUpdatingLocation()
     }

@@ -9,7 +9,8 @@ import UIKit
 import MapKit
 
 protocol EndLocationTVCellDelegate: AnyObject {
-    func didDeleteButtonClicked(_ cell: EndLocationTableViewCell)
+    func didIconButtonClicked(_ cell: EndLocationTableViewCell)
+    func didEntireCellClicked(_ cell: EndLocationTableViewCell)
 }
 
 class EndLocationTableViewCell: UITableViewCell {
@@ -18,6 +19,7 @@ class EndLocationTableViewCell: UITableViewCell {
     @IBOutlet weak var lblCoordinate: UILabel!
     
     private(set) var annotation: MKAnnotation!
+    private(set) var indexPath: IndexPath?
     
     enum ButtonMode {
         case delete, placeIcon
@@ -42,6 +44,12 @@ class EndLocationTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(clickedCellContentView))
+        contentView.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc func clickedCellContentView() {
+        delegate?.didEntireCellClicked(self)
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -67,10 +75,22 @@ class EndLocationTableViewCell: UITableViewCell {
         lblCoordinate.text = text
     }
     
+    func configure(info: CoordInfo, indexPath: IndexPath) {
+        self.indexPath = indexPath
+        
+        // TODO: 좌표 소수점 표시 > extension으로 빼기
+        let lat = String(format: "%.5f", info.latitude)
+        let lon = String(format: "%.5f", info.longitude)
+        let title = info.title ?? "Unknown place"
+        let text = "\(title): \(lat), \(lon)"
+        
+        lblCoordinate.text = text
+    }
+    
     @IBAction func btnIconDoAct(_ sender: Any) {
         switch buttonMode {
         case .delete:
-            delegate?.didDeleteButtonClicked(self)
+            delegate?.didIconButtonClicked(self)
         case .placeIcon:
             break
         }

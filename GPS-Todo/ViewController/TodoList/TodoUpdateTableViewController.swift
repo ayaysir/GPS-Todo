@@ -220,6 +220,7 @@ extension TodoUpdateTableViewController: CLLocationManagerDelegate {
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        // 현재 위치 업데이트
         guard let locValue: CLLocationCoordinate2D = manager.location?.coordinate
         else {
             return
@@ -234,7 +235,7 @@ extension TodoUpdateTableViewController: EndLocationTVCellDelegate {
     
     // MARK: - EndLocationTableViewCell
     
-    func didDeleteButtonClicked(_ cell: EndLocationTableViewCell) {
+    func didIconButtonClicked(_ cell: EndLocationTableViewCell) {
         guard let annotation = cell.annotation else {
             return
         }
@@ -242,4 +243,11 @@ extension TodoUpdateTableViewController: EndLocationTVCellDelegate {
         mapViewEnd.removeAnnotation(annotation)
         tableView.reloadData()
     }
+    
+    
+    func didEntireCellClicked(_ cell: EndLocationTableViewCell) {
+        
+    }
+    
+    
 }
