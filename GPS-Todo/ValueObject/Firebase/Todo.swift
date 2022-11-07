@@ -22,14 +22,19 @@ struct Todo: Codable {
     var title: String
     var content: String
     
-    // time
-    // ...
-    
     var authorUID: String = ""
     
     // 좌표
     var startCoord: CoordInfo
     var endCoords: [CoordInfo]
+    
+    // scheduling
+    var scheduleType: TodoScheduleType
+    
+    /// schedule type이 multiple인 경우, x일마다 한 번씩 체크 가능하도록 하는 변수
+    /// - 1 이상
+    /// - 예) 5 -> 5일에 한번
+    var schedulePerDay: Int
     
     enum CodingKeys: String, CodingKey {
         case documentID = "document_id"
@@ -42,6 +47,9 @@ struct Todo: Codable {
         case endCoords = "end_coords"
         
         case title, content
+        
+        case scheduleType = "schedule_type"
+        case schedulePerDay = "schedule_per_day"
     }
     
 }

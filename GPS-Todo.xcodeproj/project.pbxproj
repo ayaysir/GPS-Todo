@@ -54,6 +54,9 @@
 		44FA53C529140ED900133A3E /* CoordInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53C429140ED900133A3E /* CoordInfo.swift */; };
 		44FA53C72914126900133A3E /* UISegmentControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53C62914126900133A3E /* UISegmentControl.swift */; };
 		44FA53CD2916D32000133A3E /* IQKeyboardManagerSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 44FA53CC2916D32000133A3E /* IQKeyboardManagerSwift */; };
+		44FA53CF2918191300133A3E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53CE2918191300133A3E /* CLLocationCoordinate2D+.swift */; };
+		44FA53D1291966E000133A3E /* ScheduleSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53D0291966E000133A3E /* ScheduleSelectTableViewController.swift */; };
+		44FA53D3291972D400133A3E /* TodoScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53D2291972D400133A3E /* TodoScheduleType.swift */; };
 		816DA937E2BD09D56FA9EE31 /* Pods_GPS_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63EDE213F0A8703D6C3EEBB /* Pods_GPS_TodoTests.framework */; };
 		C5CBFCFEF351F5EAEDDE666E /* Pods_AssistantWatchForGPSTODO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4B293F0391A6747641E212 /* Pods_AssistantWatchForGPSTODO.framework */; };
 		CAF728119A73F34730E2D763 /* Pods_GPS_Todo_GPS_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02B269BDCD0FCEAA41D3EF /* Pods_GPS_Todo_GPS_TodoUITests.framework */; };
@@ -171,6 +174,9 @@
 		44FA53C229140CFC00133A3E /* Double+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+.swift"; sourceTree = "<group>"; };
 		44FA53C429140ED900133A3E /* CoordInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordInfo.swift; sourceTree = "<group>"; };
 		44FA53C62914126900133A3E /* UISegmentControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UISegmentControl.swift; sourceTree = "<group>"; };
+		44FA53CE2918191300133A3E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
+		44FA53D0291966E000133A3E /* ScheduleSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectTableViewController.swift; sourceTree = "<group>"; };
+		44FA53D2291972D400133A3E /* TodoScheduleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoScheduleType.swift; sourceTree = "<group>"; };
 		499114AF779D1C29EDF1C74E /* Pods-GPS-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo.release.xcconfig"; path = "Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPS_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5160995558F6F0D7692A99F0 /* Pods-AssistantWatchForGPSTODO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO.debug.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO/Pods-AssistantWatchForGPSTODO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -312,6 +318,7 @@
 			children = (
 				4437F1DE290C4D9B0034624B /* Todo.swift */,
 				44FA53C429140ED900133A3E /* CoordInfo.swift */,
+				44FA53D2291972D400133A3E /* TodoScheduleType.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -322,6 +329,7 @@
 				4437F1E0290C50A00034624B /* TodoListTableViewController.swift */,
 				4437F1E4290D989B0034624B /* TodoUpdateTableViewController.swift */,
 				4437F1E2290C5B150034624B /* TodoDetailTableViewController.swift */,
+				44FA53D0291966E000133A3E /* ScheduleSelectTableViewController.swift */,
 			);
 			path = TodoList;
 			sourceTree = "<group>";
@@ -341,6 +349,7 @@
 				4437F1EB29102A380034624B /* MKMapView+.swift */,
 				44FA53C229140CFC00133A3E /* Double+.swift */,
 				44FA53C62914126900133A3E /* UISegmentControl.swift */,
+				44FA53CE2918191300133A3E /* CLLocationCoordinate2D+.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -884,6 +893,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44FA53CF2918191300133A3E /* CLLocationCoordinate2D+.swift in Sources */,
 				44B1002728F487BB005B97EE /* GPS_Todo.xcdatamodeld in Sources */,
 				4437F1E1290C50A00034624B /* TodoListTableViewController.swift in Sources */,
 				44FA53BA2912D0F900133A3E /* EndLocationTableViewCell.swift in Sources */,
@@ -896,6 +906,7 @@
 				4437F1AB2905957F0034624B /* PasswordSignUpViewModel.swift in Sources */,
 				4437F1AF29059A2C0034624B /* EmailEntryViewController.swift in Sources */,
 				44B1001D28F487BB005B97EE /* AppDelegate.swift in Sources */,
+				44FA53D3291972D400133A3E /* TodoScheduleType.swift in Sources */,
 				44298BAE28FDB71E00C3D4DA /* LoginCustomViewController.swift in Sources */,
 				44FA53C529140ED900133A3E /* CoordInfo.swift in Sources */,
 				44FA53BE2912D8AD00133A3E /* BehaviorRelay+.swift in Sources */,
@@ -905,6 +916,7 @@
 				44B1007C28F48D62005B97EE /* AdMob.swift in Sources */,
 				4437F1DF290C4D9B0034624B /* Todo.swift in Sources */,
 				44FA53C12913D5AE00133A3E /* TodoUpdateViewModel.swift in Sources */,
+				44FA53D1291966E000133A3E /* ScheduleSelectTableViewController.swift in Sources */,
 				4437F1E5290D989B0034624B /* TodoUpdateTableViewController.swift in Sources */,
 				44B1001F28F487BB005B97EE /* SceneDelegate.swift in Sources */,
 				4437F1EC29102A380034624B /* MKMapView+.swift in Sources */,

@@ -20,10 +20,6 @@ class MainViewController: UIViewController {
     var handle: AuthStateDidChangeListenerHandle!
     private let locationManager = GPSLocationManager()
     
-    // Stepper Example
-    @IBOutlet weak var lblCount: UILabel!
-    @IBOutlet weak var stepperCount: UIStepper!
-    
     // Unhashed nonce (Apple Login).
     fileprivate var currentNonce: String?
     
@@ -42,13 +38,6 @@ class MainViewController: UIViewController {
             break
         }
         
-        _ = stepperCount.rx.value.subscribe(onNext: { [unowned self] value in
-            print("label updated by RxSwift")
-            lblCount.text = "\(value)"
-        })
-        
-        let array = ["0", "a"]
-        print(array[safe: 5] ?? "safe")
     }
     
     override func viewWillAppear(_ animated: Bool) {

@@ -15,7 +15,8 @@ class TodoUpdateTableViewController: UITableViewController {
     
     // MARK: - Constants
     
-    private let SECTION_END_COORDS = 3
+    // 디자인 바꿀 때마다 즉시 교체
+    private let SECTION_END_COORDS = 4
     
     // MARK: - @IBOutlet
     
@@ -25,6 +26,7 @@ class TodoUpdateTableViewController: UITableViewController {
     @IBOutlet weak var barBtnSubmit: UIBarButtonItem!
     @IBOutlet weak var mapViewEnd: MKMapView!
     @IBOutlet weak var btnRemoveAnnotation: UIButton!
+    @IBOutlet weak var lblScheduleStatus: UILabel!
     
     // MARK: - Member variables
     
@@ -92,7 +94,10 @@ class TodoUpdateTableViewController: UITableViewController {
             let todo = Todo(title: viewModel.todoTitle.value,
                             content: viewModel.content.value,
                             startCoord: CoordInfo(fromCoord: viewModel.startCoord.value),
-                            endCoords: endCoords)
+                            endCoords: endCoords,
+                            scheduleType: viewModel.scheduleType.value,
+                            schedulePerDay: viewModel.schedulePerDay.value
+            )
             print("To Update Todo:", todo)
             
             FirestoreTodo.shared.addPost(todoRequest: todo) { documenID in
@@ -109,6 +114,15 @@ class TodoUpdateTableViewController: UITableViewController {
                 tableView.reloadData()
             }
         }).disposed(by: disposeBag)
+        
+        // observe schedule type & perDay
+        _ = viewModel.scheduleChanged.subscribe(onNext: { [unowned self] isValid in
+            
+            let type = viewModel.scheduleType.value
+            let perDay = viewModel.schedulePerDay.value
+            
+            lblScheduleStatus.text = type.textValue(perDay)
+        })
     }
     
     // MARK: - @objc methods
@@ -132,6 +146,18 @@ class TodoUpdateTableViewController: UITableViewController {
             
             // https://developer.apple.com/forums/thread/126473
             self.mapViewEnd.setCenter(coordinate, animated: true)
+        }
+    }
+    
+    // MARK: - Prepare
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "SelectSchedule_Segue":
+            let selectVC = segue.destination as? ScheduleSelectTableViewController
+            selectVC?.viewModel = viewModel
+        default:
+            break
         }
     }
 }

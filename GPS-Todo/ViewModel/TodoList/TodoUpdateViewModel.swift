@@ -25,5 +25,13 @@ class TodoUpdateViewModel {
         }
     }
     
+    var scheduleType = BehaviorRelay<TodoScheduleType>(value: .once)
+    var schedulePerDay = BehaviorRelay<Int>(value: 1)
     
+    var scheduleChanged: Observable<Bool> {
+        return Observable.combineLatest(scheduleType.asObservable(),
+                                        schedulePerDay.asObservable()) { type, perDay in
+            return true
+        }
+    }
 }

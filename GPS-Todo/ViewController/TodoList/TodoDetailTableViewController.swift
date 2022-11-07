@@ -269,6 +269,11 @@ extension TodoDetailTableViewController: CLLocationManagerDelegate {
          currentLocationAnnotation.subtitle = "At (\(currLocCoord.latitude), \(currLocCoord.longitude))"
          // mainMap.setCenter(currLocCoord, animated: true)
          
+         todo.endCoords.forEach { info in
+             let distance = currLocCoord.distance(from: info.toCLCoordinate())
+             print(info.title, distance)
+         }
+         
      }
 }
 
