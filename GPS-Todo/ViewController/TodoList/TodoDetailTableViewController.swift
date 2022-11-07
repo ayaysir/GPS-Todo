@@ -24,6 +24,8 @@ class TodoDetailTableViewController: UITableViewController {
     @IBOutlet weak var lblStartCoord: UILabel!
     @IBOutlet weak var segEndLocation: UISegmentedControl!
     @IBOutlet weak var barBtnUpdate: UIBarButtonItem!
+    @IBOutlet weak var lblScheduleStatus: UILabel!
+    @IBOutlet weak var btnCheck: UIButton!
     
     private var overlayOnTxfTitle: UIView!
     
@@ -57,6 +59,9 @@ class TodoDetailTableViewController: UITableViewController {
         @unknown default:
             break
         }
+        
+        // Init
+        lblScheduleStatus.text = todo.scheduleType.textValue(todo.schedulePerDay)
         
         // RxSwift
         _ = segEndLocation.rx.selectedSegmentIndex.subscribe(onNext: { [unowned self] index in
@@ -269,9 +274,14 @@ extension TodoDetailTableViewController: CLLocationManagerDelegate {
          currentLocationAnnotation.subtitle = "At (\(currLocCoord.latitude), \(currLocCoord.longitude))"
          // mainMap.setCenter(currLocCoord, animated: true)
          
+         btnCheck.isEnabled = false
+         
          todo.endCoords.forEach { info in
              let distance = currLocCoord.distance(from: info.toCLCoordinate())
              print(info.title, distance)
+             if distance <= 5 {
+                 btnCheck.isEnabled = true
+             }
          }
          
      }

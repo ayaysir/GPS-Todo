@@ -57,6 +57,8 @@
 		44FA53CF2918191300133A3E /* CLLocationCoordinate2D+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53CE2918191300133A3E /* CLLocationCoordinate2D+.swift */; };
 		44FA53D1291966E000133A3E /* ScheduleSelectTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53D0291966E000133A3E /* ScheduleSelectTableViewController.swift */; };
 		44FA53D3291972D400133A3E /* TodoScheduleType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53D2291972D400133A3E /* TodoScheduleType.swift */; };
+		44FA53D529197F2800133A3E /* TodoCheck.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44FA53D429197F2800133A3E /* TodoCheck.swift */; };
+		44FA53D829197FC800133A3E /* Milestone.md in Resources */ = {isa = PBXBuildFile; fileRef = 44FA53D729197FC800133A3E /* Milestone.md */; };
 		816DA937E2BD09D56FA9EE31 /* Pods_GPS_TodoTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E63EDE213F0A8703D6C3EEBB /* Pods_GPS_TodoTests.framework */; };
 		C5CBFCFEF351F5EAEDDE666E /* Pods_AssistantWatchForGPSTODO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7F4B293F0391A6747641E212 /* Pods_AssistantWatchForGPSTODO.framework */; };
 		CAF728119A73F34730E2D763 /* Pods_GPS_Todo_GPS_TodoUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5D02B269BDCD0FCEAA41D3EF /* Pods_GPS_Todo_GPS_TodoUITests.framework */; };
@@ -177,6 +179,8 @@
 		44FA53CE2918191300133A3E /* CLLocationCoordinate2D+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CLLocationCoordinate2D+.swift"; sourceTree = "<group>"; };
 		44FA53D0291966E000133A3E /* ScheduleSelectTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleSelectTableViewController.swift; sourceTree = "<group>"; };
 		44FA53D2291972D400133A3E /* TodoScheduleType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoScheduleType.swift; sourceTree = "<group>"; };
+		44FA53D429197F2800133A3E /* TodoCheck.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoCheck.swift; sourceTree = "<group>"; };
+		44FA53D729197FC800133A3E /* Milestone.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = Milestone.md; sourceTree = "<group>"; };
 		499114AF779D1C29EDF1C74E /* Pods-GPS-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GPS-Todo.release.xcconfig"; path = "Target Support Files/Pods-GPS-Todo/Pods-GPS-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		4F0EF6AAD91320FAB531A021 /* Pods_GPS_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GPS_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5160995558F6F0D7692A99F0 /* Pods-AssistantWatchForGPSTODO.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AssistantWatchForGPSTODO.debug.xcconfig"; path = "Target Support Files/Pods-AssistantWatchForGPSTODO/Pods-AssistantWatchForGPSTODO.debug.xcconfig"; sourceTree = "<group>"; };
@@ -319,6 +323,7 @@
 				4437F1DE290C4D9B0034624B /* Todo.swift */,
 				44FA53C429140ED900133A3E /* CoordInfo.swift */,
 				44FA53D2291972D400133A3E /* TodoScheduleType.swift */,
+				44FA53D429197F2800133A3E /* TodoCheck.swift */,
 			);
 			path = Firebase;
 			sourceTree = "<group>";
@@ -383,6 +388,7 @@
 		44B1001B28F487BB005B97EE /* GPS-Todo */ = {
 			isa = PBXGroup;
 			children = (
+				44FA53D629197F9D00133A3E /* DevDocs */,
 				44FA53B42912D0AF00133A3E /* View */,
 				4437F1EA29102A2D0034624B /* Extension */,
 				4437F1E7291023380034624B /* Wrapper */,
@@ -483,6 +489,14 @@
 				44FA53C02913D5AE00133A3E /* TodoUpdateViewModel.swift */,
 			);
 			path = TodoList;
+			sourceTree = "<group>";
+		};
+		44FA53D629197F9D00133A3E /* DevDocs */ = {
+			isa = PBXGroup;
+			children = (
+				44FA53D729197FC800133A3E /* Milestone.md */,
+			);
+			path = DevDocs;
 			sourceTree = "<group>";
 		};
 		83B668C12008FB5F086EC33B /* Frameworks */ = {
@@ -684,6 +698,7 @@
 				44B1002C28F487BD005B97EE /* LaunchScreen.storyboard in Resources */,
 				44B1007928F48A99005B97EE /* GoogleService-Info.plist in Resources */,
 				44298BBF2900738500C3D4DA /* FUIAdvancedPasswordSignUpViewController.xib_backup in Resources */,
+				44FA53D829197FC800133A3E /* Milestone.md in Resources */,
 				44298BBA2900707F00C3D4DA /* PasswordSignUpViewController.xib in Resources */,
 				44B1002928F487BD005B97EE /* Assets.xcassets in Resources */,
 				44B1002428F487BB005B97EE /* Main.storyboard in Resources */,
@@ -899,6 +914,7 @@
 				44FA53BA2912D0F900133A3E /* EndLocationTableViewCell.swift in Sources */,
 				44FA53C72914126900133A3E /* UISegmentControl.swift in Sources */,
 				4437F1E9291023810034624B /* GPSLocationManager.swift in Sources */,
+				44FA53D529197F2800133A3E /* TodoCheck.swift in Sources */,
 				44FA53C329140CFC00133A3E /* Double+.swift in Sources */,
 				44B1002128F487BB005B97EE /* MainViewController.swift in Sources */,
 				44298BB92900707F00C3D4DA /* PasswordSignUpViewController.swift in Sources */,

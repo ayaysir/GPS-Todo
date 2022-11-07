@@ -8,10 +8,6 @@
 import UIKit
 import BGSMM_DevKit
 
-/*
- 나중에 삭제 후 재작성(기존 정보를 복제해서 새 목록 작성) 기능 구현
- */
-
 class TodoListTableViewController: UITableViewController {
     
     var list: [Todo] = []
